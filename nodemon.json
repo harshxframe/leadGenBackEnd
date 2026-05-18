@@ -1,0 +1,8 @@
+{
+  "watch": ["src", "server.js"],
+  "ignore": [
+    "temp/**",
+    "gmaps-output/**"
+  ],
+  "ext": "js,json"
+}

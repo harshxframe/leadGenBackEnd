@@ -13,7 +13,10 @@ import { generateApiKey } from "../utils/generateAPIKey.js";
 import {
   createAccountService,
   getUserService,
+  incrementSearchesService,
   loginAccountService,
+  toggleBlockUserService,
+  updateUserService,
 } from "../services/databaseService.js";
 import { generateToken, readToken } from "../utils/jwt.js";
 
@@ -113,7 +116,7 @@ export const getUser = async (req, res) => {
 
     // Get token
     const getId = readToken(token);
-    if (!getId && !getId.id) {
+    if (!getId) {
       return res
         .status(403)
         .send(responseBody(true, false, 403, "Invalid token", {}));
@@ -147,6 +150,134 @@ export const getUser = async (req, res) => {
     return res
       .status(500)
       .send(responseBody(true, false, 500, e.message || "Server Error", {}));
+  }
+};
+
+export const updateUser = async (req, res) => {
+  try {
+    const { token, name, email, profession, credits } = req.body || {};
+    if (!name && !email && !profession && !credits) {
+      return res
+        .status(400)
+        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
+    }
+    if (!token) {
+      return res
+        .status(400)
+        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
+    }
+    // Get token
+    const getId = readToken(token);
+    if (!getId) {
+      return res
+        .status(403)
+        .send(responseBody(true, false, 403, "Invalid token", {}));
+    }
+
+    const updateObj = {};
+
+    if (name !== undefined) updateObj["name"] = name;
+    if (email !== undefined) updateObj["email"] = email;
+    if (profession !== undefined) updateObj["profession"] = profession;
+    if (credits !== undefined && !isNaN(Number(credits))) {
+      updateObj["credits"] = Number(credits);
+    }
+
+    const isSuccess = await updateUserService(getId?.id, updateObj);
+    if (isSuccess.success) {
+      const userData = isSuccess.data?.user.toObject();
+      delete userData["_id"];
+      delete userData["createdAt"];
+      delete userData["updatedAt"];
+      delete userData["__v"];
+      return res.status(200).send(
+        responseBody(false, true, 200, "User updated successfull", {
+          user: userData,
+        }),
+      );
+    }
+    return res
+      .status(400)
+      .send(
+        responseBody(
+          true,
+          false,
+          400,
+          isSuccess.message || "Failed to update User",
+          {},
+        ),
+      );
+  } catch (e) {
+    return res
+      .status(500)
+      .send(responseBody(true, false, 500, e.message || "Server Error", {}));
+  }
+};
+
+export const toggleBlockUser = async (req, res) => {
+  try {
+    const { email, isBlocked } = req.body || {};
+
+    const isValidEmail = typeof email === 'string' && email.includes('@') && email.trim().length > 3;
+    const isValidBoolean = typeof isBlocked === 'boolean';
+
+    if (!isValidEmail || !isValidBoolean) {
+      return res.status(400).send(responseBody(true, false, 400, "Payload not satisfied", {}));
+    }
+
+    const isSuccess = await toggleBlockUserService(email.trim(), isBlocked);
+    if (isSuccess.success) {
+      // Inline Sanitization
+      const userData = isSuccess.data.user.toObject();
+      delete userData["_id"];
+      delete userData["createdAt"];
+      delete userData["updatedAt"];
+      delete userData["__v"];
+
+      return res.status(200).send(
+        responseBody(false, true, 200, isSuccess.message, {
+          user: userData,
+        }),
+      );
+    }
+    return res.status(400).send(responseBody(true, false, 400, isSuccess.message, {}));
+  } catch (e) {
+    return res.status(500).send(responseBody(true, false, 500, e.message || "Server Error", {}));
+  }
+};
+
+// 2. Increment Searches Controller
+export const incrementSearches = async (req, res) => {
+  try {
+    const { token } = req.body || {};
+
+    if (!token || typeof token !== 'string' || token.trim().length === 0) {
+      return res.status(400).send(responseBody(true, false, 400, "Token is required", {}));
+    }
+
+    const getId = readToken(token);
+    if (!getId) {
+      return res.status(403).send(responseBody(true, false, 403, "Invalid token", {}));
+    }
+
+    const isSuccess = await incrementSearchesService(getId.id);
+    if (isSuccess.success) {
+      // Inline Sanitization
+      const userData = isSuccess.data.user.toObject();
+      delete userData["_id"];
+      delete userData["createdAt"];
+      delete userData["updatedAt"];
+      delete userData["__v"];
+
+      return res.status(200).send(
+        responseBody(false, true, 200, isSuccess.message, {
+          user: userData,
+        }),
+      );
+    }
+    return res.status(400).send(responseBody(true, false, 400, isSuccess.message, {}));
+  } catch (e) {
+    return res.status(500).send(responseBody(true, false, 500, e.message || "Server Error", {}));
   }
 };
 

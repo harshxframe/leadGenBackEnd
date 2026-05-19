@@ -56,12 +56,55 @@ export const loginAccountService = async (payload) => {
 
 export const getUserService = async (id) => {
   try {
-    console.log(id);
     const getUser = await User.findById(id);
     if (!getUser) {
       return serviceResponse(false, "User does not exsit", {});
     }
     return serviceResponse(true, "User exsit", { user: getUser });
+  } catch (e) {
+    return serviceResponse(false, e.message || "DB Error", {});
+  }
+};
+
+export const updateUserService = async (id, payload) => {
+  try {
+    const updateUser = await User.findByIdAndUpdate(id,{$set:payload},{new:true});
+    if (!updateUser) {
+      return serviceResponse(false, "Failed to update user", {});
+    }
+    return serviceResponse(true, "User updated successfull", { user: updateUser });
+  } catch (e) {
+    return serviceResponse(false, e.message || "DB Error", {});
+  }
+};
+
+export const toggleBlockUserService = async (email, isBlocked) => {
+  try {
+    const updatedUser = await User.findOneAndUpdate(
+      { email: email.toLowerCase().trim() },
+      { isBlocked },
+      { new: true }
+    );
+    if (!updatedUser) {
+      return serviceResponse(false, "User not found", {});
+    }
+    return serviceResponse(true, "Block status updated successfully", { user: updatedUser });
+  } catch (e) {
+    return serviceResponse(false, e.message || "DB Error", {});
+  }
+};
+
+export const incrementSearchesService = async (id) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      { $inc: { totalSearches: 1 } },
+      { new: true }
+    );
+    if (!updatedUser) {
+      return serviceResponse(false, "User not found", {});
+    }
+    return serviceResponse(true, "Search incremented successfully", { user: updatedUser });
   } catch (e) {
     return serviceResponse(false, e.message || "DB Error", {});
   }

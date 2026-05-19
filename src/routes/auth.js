@@ -4,6 +4,7 @@ import {
   loginAccount,
   sendVarificationCode,
   optVerification,
+  getUser
 } from "../controllers/auth.js";
 import {
   checkEmailNotificationsEnabled,
@@ -15,6 +16,7 @@ const authRouter = express.Router();
 
 authRouter.post("/createAccount", checkNewSignUp, createAccount);
 authRouter.post("/login", checkNewLogin, loginAccount);
+authRouter.post("/getUser", getUser);
 authRouter.post(
   "/sendVerificationCode",
   checkEmailNotificationsEnabled,

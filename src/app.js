@@ -9,6 +9,10 @@ import { systemHealthMiddleware } from "./middlewares/health.js";
 import { globalErrorHandler } from "./middlewares/globalError.js";
 import authRouter from "./routes/auth.js";
 import adminRouter from "./routes/admin.js";
+import {
+  checkMaintenance,
+  checkNewRequest,
+} from "./middlewares/accessValidator.js";
 dotenv.config();
 
 const initApp = async () => {
@@ -18,9 +22,11 @@ const initApp = async () => {
     const app = express();
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+    app.use("/admin", adminRouter);
+    app.use(checkNewRequest);
+    app.use(checkMaintenance);
     app.use("/app/v1/auth", authRouter);
     app.use("/app/v1", generateLeadsRouter);
-    app.use("/admin",adminRouter);
     app.get("/health", systemHealthMiddleware);
     app.use(invalidRoute);
     app.use(globalErrorHandler);

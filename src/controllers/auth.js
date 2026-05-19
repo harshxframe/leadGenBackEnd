@@ -9,19 +9,56 @@ import {
   getAdminSettings,
   verifyOTP,
 } from "../services/redisService.js";
+import { generateApiKey } from "../utils/generateAPIKey.js";
+import {
+  createAccountService,
+  getUserService,
+  loginAccountService,
+} from "../services/databaseService.js";
+import { generateToken, readToken } from "../utils/jwt.js";
 
 export const createAccount = async (req, res) => {
   try {
-    const { name, email, profession, emailVerified, lastLoginAt } =
-      req.body || {};
+    const { name, email, profession, emailVerified } = req.body || {};
 
-    if (!name || !email || !profession || !emailVerified || !lastLoginAt) {
+    if (!name || !email || !profession || !emailVerified) {
       return res
         .status(400)
         .send(responseBody(true, false, 400, "Payload not satisfied", {}));
     }
 
-    // apiKey and credit and
+    const credit = getAdminSettings().freeCredit || 5;
+    const apiKey = generateApiKey();
+    const finalPayload = {
+      name: name,
+      email: email,
+      profession: profession,
+      apiKey: apiKey,
+      credits: credit,
+      emailVerified: emailVerified,
+      lastLoginAt: new Date().toISOString(),
+    };
+
+    const isSuccess = await createAccountService(finalPayload);
+    if (isSuccess.success) {
+      const token = generateToken(String(isSuccess.data.user?._id));
+      return res.status(200).send(
+        responseBody(false, true, 200, "Account created successfull", {
+          token: token,
+        }),
+      );
+    }
+    return res
+      .status(400)
+      .send(
+        responseBody(
+          true,
+          false,
+          400,
+          isSuccess.message || "Failed to create account",
+          {},
+        ),
+      );
   } catch (e) {
     return res
       .status(500)
@@ -29,10 +66,90 @@ export const createAccount = async (req, res) => {
   }
 };
 
-export const loginAccount = (req, res) => {
+export const loginAccount = async (req, res) => {
   try {
-  } catch (e) {}
+    const { email } = req.body || {};
+    if (!email) {
+      return res
+        .status(400)
+        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
+    }
+    //ready to login
+    const isSuccess = await loginAccountService({ email });
+    if (isSuccess.success) {
+      const token = generateToken(String(isSuccess.data.user?._id));
+      return res
+        .status(200)
+        .send(
+          responseBody(false, true, 200, "Login successfull", { token: token }),
+        );
+    }
+    return res
+      .status(400)
+      .send(
+        responseBody(
+          true,
+          false,
+          400,
+          isSuccess.message || "Failed to login",
+          {},
+        ),
+      );
+  } catch (e) {
+    return res
+      .status(500)
+      .send(responseBody(true, false, 500, e.message || "Server Error", {}));
+  }
 };
+
+export const getUser = async (req, res) => {
+  try {
+    const { token } = req.body || {};
+    if (!token) {
+      return res
+        .status(400)
+        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
+    }
+
+    // Get token
+    const getId = readToken(token);
+    if (!getId && !getId.id) {
+      return res
+        .status(403)
+        .send(responseBody(true, false, 403, "Invalid token", {}));
+    }
+
+    const isSuccess = await getUserService(getId.id);
+    if (isSuccess.success) {
+      const userData = isSuccess.data?.user.toObject();
+      delete userData["_id"];
+      delete userData["createdAt"];
+      delete userData["updatedAt"];
+      delete userData["__v"];
+      return res.status(200).send(
+        responseBody(false, true, 200, "Get user successfull", {
+          user: userData,
+        }),
+      );
+    }
+    return res
+      .status(400)
+      .send(
+        responseBody(
+          true,
+          false,
+          400,
+          isSuccess.message || "Failed to get User",
+          {},
+        ),
+      );
+  } catch (e) {
+    return res
+      .status(500)
+      .send(responseBody(true, false, 500, e.message || "Server Error", {}));
+  }
+};
+
 export const sendVarificationCode = async (req, res) => {
   try {
     const { email } = req.body || {};

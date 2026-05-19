@@ -2744,3 +2744,778 @@
 {"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:30:10.812Z"}
 {"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:30:10.818Z"}
 {"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:30:10.821Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:36:18.843Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:36:18.848Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:36:18.850Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:36:30.985Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:36:30.990Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:36:30.992Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:36:33.303Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:36:33.307Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:36:33.310Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:36:35.994Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:36:36.000Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:36:36.003Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:38:19.511Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:38:19.517Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:38:19.520Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:38:24.639Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:38:24.645Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:38:24.648Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:38:42.605Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:38:42.612Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:38:42.615Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:39:08.188Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:39:08.195Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:39:08.198Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:39:15.967Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:39:15.972Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:39:15.975Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:39:24.628Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:39:24.637Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:39:24.639Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:39:33.047Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:39:33.054Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:39:33.057Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:39:43.647Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:39:43.653Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:39:43.656Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:39:57.440Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:39:57.447Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:39:57.450Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:40:20.585Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:40:20.590Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:40:20.592Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:40:22.360Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:40:22.368Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:40:22.371Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:40:32.335Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:40:32.339Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:40:32.342Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:40:37.151Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:40:37.157Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:40:37.160Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:40:43.197Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:40:43.202Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:40:43.204Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:40:49.549Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:40:49.556Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:40:49.559Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:40:57.224Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:40:57.229Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:40:57.232Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:41:01.651Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:41:01.657Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:41:01.660Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:41:06.589Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:41:06.595Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:41:06.598Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:41:50.828Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:41:50.835Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:41:50.838Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:41:57.031Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:41:57.038Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:41:57.041Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:42:01.616Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:42:01.624Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:42:01.627Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:42:25.718Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:42:25.723Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:42:25.725Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:42:30.136Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:42:30.144Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:42:30.147Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:42:34.805Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:42:34.812Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:42:34.815Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:42:40.585Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:42:40.593Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:42:40.596Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:42:43.182Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:42:43.188Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:42:43.191Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:42:50.547Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:42:50.554Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:42:50.557Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:45:04.709Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:45:04.713Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:45:04.715Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:46:40.773Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:46:40.780Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:46:40.782Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:46:52.453Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:46:52.459Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:46:52.462Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:46:58.523Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:46:58.530Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:46:58.533Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:47:02.409Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:47:02.416Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:47:02.419Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:47:06.558Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:47:06.565Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:47:06.568Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:47:11.222Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:47:11.227Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:47:11.229Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:47:17.922Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:47:17.927Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:47:17.929Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:47:25.351Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:47:25.357Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:47:25.359Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:47:30.156Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:47:30.163Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:47:30.166Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:47:56.381Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:47:56.390Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:47:56.393Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:48:04.760Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:48:04.767Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:48:04.769Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:48:09.233Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:48:09.240Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:48:09.243Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:48:11.667Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:48:11.672Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:48:11.674Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:48:15.002Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:48:15.007Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:48:15.009Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:48:21.790Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:48:21.797Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:48:21.799Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:48:26.566Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:48:26.570Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:48:26.573Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:48:29.097Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:48:29.103Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:48:29.106Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:48:32.704Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:48:32.710Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:48:32.713Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:49:06.123Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:49:06.129Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:49:06.131Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:49:08.232Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:49:08.239Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:49:08.241Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:50:28.765Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:50:28.769Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:50:28.771Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:50:29.765Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:50:29.769Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:50:29.772Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:50:32.367Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:50:32.372Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:50:32.375Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:50:33.706Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:50:33.710Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:50:33.712Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:51:19.654Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:51:19.663Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:51:19.666Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:51:40.217Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:51:40.222Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:51:40.224Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:51:41.353Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:51:41.361Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:51:41.364Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:51:42.597Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:51:42.604Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:51:42.607Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:13.402Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:13.406Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:13.409Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:16.292Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:16.301Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:16.304Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:18.804Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:18.811Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:18.814Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:22.304Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:22.309Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:22.311Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:24.002Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:24.010Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:24.014Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:29.902Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:29.909Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:29.913Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:38.516Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:38.523Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:38.526Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:39.692Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:39.699Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:39.702Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:42.428Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:42.437Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:42.441Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:45.904Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:45.909Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:45.911Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:50.787Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:50.796Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:50.799Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:54.054Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:54.061Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:54.064Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:52:57.613Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:52:57.619Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:52:57.622Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:01.205Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:01.211Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:01.213Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:05.931Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:05.936Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:05.938Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:08.236Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:08.240Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:08.243Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:12.256Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:12.264Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:12.268Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:17.513Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:17.519Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:17.522Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:19.608Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:19.615Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:19.618Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:30.760Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:30.766Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:30.769Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:36.474Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:36.478Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:36.481Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:37.766Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:37.774Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:37.777Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:45.907Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:45.913Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:45.916Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:50.198Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:50.204Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:50.207Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:51.651Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:51.655Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:51.657Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:56.040Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:56.047Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:56.050Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:53:58.510Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:53:58.517Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:53:58.520Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:54:00.616Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:54:00.623Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:54:00.626Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:54:04.200Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:54:04.204Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:54:04.207Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:54:11.930Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:54:11.935Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:54:11.937Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:54:15.714Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:54:15.720Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:54:15.723Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:54:59.707Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:54:59.714Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:54:59.718Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:55:01.852Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:55:01.859Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:55:01.862Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:55:04.470Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:55:04.479Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:55:04.482Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:55:13.699Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:55:13.704Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:55:13.706Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:55:16.301Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:55:16.305Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:55:16.307Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:55:25.590Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:55:25.597Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:55:25.599Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:55:53.647Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:55:53.653Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:55:53.656Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:56:53.644Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:56:53.649Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:56:53.651Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:56:55.126Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:56:55.132Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:56:55.135Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:57:00.972Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:57:00.981Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:57:00.985Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:57:09.352Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:57:09.357Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:57:09.359Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:57:12.602Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:57:12.607Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:57:12.609Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:58:52.761Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:58:52.766Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:58:52.768Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:58:54.640Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:58:54.648Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:58:54.651Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:59:07.269Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:59:07.277Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:59:07.281Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:59:09.532Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:59:09.540Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:59:09.543Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:59:16.503Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:59:16.509Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:59:16.512Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:59:22.537Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:59:22.541Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:59:22.543Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:59:24.095Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:59:24.099Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:59:24.102Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T05:59:50.102Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T05:59:50.107Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T05:59:50.109Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:00:13.977Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:00:13.981Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:00:13.983Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:00:18.774Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:00:18.778Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:00:18.780Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:00:22.437Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:00:22.445Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:00:22.448Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:00:29.371Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:00:29.380Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:00:29.384Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:00:33.889Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:00:33.895Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:00:33.898Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:00:34.969Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:00:34.976Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:00:34.979Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:00:41.065Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:00:41.072Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:00:41.075Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:00:51.410Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:00:51.420Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:00:51.423Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:00:54.955Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:00:54.961Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:00:54.964Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:00:58.414Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:00:58.421Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:00:58.423Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:01:00.055Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:01:00.064Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:01:00.067Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:01:03.162Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:01:03.168Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:01:03.171Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:01:05.693Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:01:05.698Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:01:05.700Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:01:09.079Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:01:09.086Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:01:09.089Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:01:11.940Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:01:11.947Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:01:11.950Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:01:18.393Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:01:18.399Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:01:18.403Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:01:20.300Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:01:20.307Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:01:20.310Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:01:24.157Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:01:24.165Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:01:24.168Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:02:03.614Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:02:03.620Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:02:03.623Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:02:08.061Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:02:08.066Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:02:08.069Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:02:10.957Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:02:10.965Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:02:10.968Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:02:12.207Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:02:12.214Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:02:12.217Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:02:17.294Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:02:17.303Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:02:17.306Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:02:28.739Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:02:28.744Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:02:28.745Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:03:44.011Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:03:44.015Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:03:44.018Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:14.262Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:14.271Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:14.274Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:16.243Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:16.251Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:16.255Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:21.836Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:21.841Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:21.844Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:23.946Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:23.954Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:23.958Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:28.796Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:28.802Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:28.804Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:35.577Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:35.582Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:35.584Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:39.395Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:39.399Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:39.401Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:45.574Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:45.580Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:45.583Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:50.725Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:50.730Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:50.732Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:53.275Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:53.282Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:53.284Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:57.671Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:57.675Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:57.677Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:04:59.418Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:04:59.423Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:04:59.425Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:05:51.134Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:05:51.142Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:05:51.144Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:05:54.034Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:05:54.043Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:05:54.046Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:05:57.164Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:05:57.169Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:05:57.171Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:05:59.118Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:05:59.125Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:05:59.127Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:06:00.273Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:06:00.278Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:06:00.280Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:06:04.804Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:06:04.809Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:06:04.811Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:06:06.507Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:06:06.513Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:06:06.517Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:06:07.942Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:06:07.949Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:06:07.952Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:06:20.052Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:06:20.060Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:06:20.063Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:06:26.293Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:06:26.299Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:06:26.303Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:09:43.798Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:09:43.802Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:09:43.804Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T06:09:45.713Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T06:09:45.718Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T06:09:45.721Z"}
+{"level":"error","message":"Server Error: SyntaxError: Unexpected token '\"', \"\"  {\\n    \"... is not valid JSON","timestamp":"2026-05-19T06:12:00.673Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:13:35.450Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:13:35.455Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:13:35.458Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:15:50.603Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:15:50.612Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:15:50.615Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:16:34.888Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:16:34.893Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:16:34.895Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:16:41.637Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:16:41.643Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:16:41.646Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:17:15.438Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:17:15.445Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:17:15.448Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:17:46.608Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:17:46.612Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:17:46.615Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:17:48.700Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:17:48.707Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:17:48.710Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:18:06.836Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:18:06.844Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:18:06.847Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:18:23.333Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:18:23.339Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:18:23.343Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:18:28.168Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:18:28.174Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:18:28.177Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:18:40.234Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:18:40.238Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:18:40.241Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:19:19.679Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:19:19.683Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:19:19.686Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:19:22.468Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:19:22.476Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:19:22.480Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:19:24.069Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:19:24.077Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:19:24.081Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:19:25.071Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:19:25.077Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:19:25.080Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:19:26.263Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:19:26.267Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:19:26.271Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:20:09.907Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:20:09.912Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:20:09.914Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:20:11.639Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:20:11.646Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:20:11.648Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:20:13.681Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:20:13.688Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:20:13.692Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:20:23.608Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:20:23.615Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:20:23.619Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:20:51.414Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:20:51.418Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:20:51.420Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:20:53.707Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:20:53.713Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:20:53.715Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:21:04.270Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:21:04.275Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:21:04.277Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:21:12.592Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:21:12.596Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:21:12.598Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:21:16.188Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:21:16.195Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:21:16.198Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:21:19.190Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:21:19.195Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:21:19.197Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:21:31.897Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:21:31.903Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:21:31.906Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:22:06.314Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:22:06.319Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:22:06.321Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:22:09.886Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:22:09.895Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:22:09.898Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:22:13.899Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:22:13.907Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:22:13.910Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:22:18.757Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:22:18.762Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:22:18.764Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:22:26.123Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:22:26.132Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:22:26.135Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:22:33.643Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:22:33.652Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:22:33.655Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:23:22.083Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:23:22.089Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:23:22.092Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:23:54.643Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:23:54.648Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:23:54.650Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:24:04.073Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:24:04.079Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:24:04.082Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:25:50.657Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:25:50.662Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:25:50.665Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:28:15.633Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:28:15.637Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:28:15.639Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:28:20.293Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:28:20.300Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:28:20.303Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:28:40.088Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:28:40.095Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:28:40.099Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:29:10.493Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:29:10.499Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:29:10.502Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:29:18.049Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:29:18.055Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:29:18.058Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:29:19.523Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:29:19.528Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:29:19.530Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:29:37.108Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:29:37.116Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:29:37.119Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:29:38.149Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:29:38.154Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:29:38.157Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:30:48.780Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:30:48.788Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:30:48.791Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:30:58.466Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:30:58.475Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:30:58.479Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:30:59.693Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:30:59.697Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:30:59.699Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:31:05.962Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:31:05.969Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:31:05.972Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:31:14.255Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:31:14.261Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:31:14.264Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:31:16.694Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:31:16.699Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:31:16.701Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:32:46.411Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:32:46.415Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:32:46.417Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:32:49.435Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:32:49.445Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:32:49.448Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:33:36.068Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:33:36.076Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:33:36.079Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:33:44.806Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:33:44.814Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:33:44.817Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:33:51.369Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:33:51.375Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:33:51.377Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:33:53.713Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:33:53.719Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:33:53.722Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:34:11.803Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:34:11.810Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:34:11.813Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:34:22.113Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:34:22.118Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:34:22.120Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:34:24.962Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:34:24.970Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:34:24.973Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:34:28.939Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:34:28.946Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:34:28.949Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:34:32.512Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:34:32.516Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:34:32.519Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:34:34.872Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:34:34.876Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:34:34.878Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:34:38.586Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:34:38.590Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:34:38.592Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:34:42.960Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:34:42.966Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:34:42.968Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:35:03.036Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:35:03.044Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:35:03.047Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:35:09.454Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:35:09.462Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:35:09.465Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:38:02.088Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:38:02.093Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:38:02.095Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:38:07.348Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:38:07.353Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:38:07.356Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:38:09.334Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:38:09.341Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:38:09.343Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:38:12.889Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:38:12.897Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:38:12.900Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:38:14.296Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:38:14.304Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:38:14.307Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:38:21.793Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:38:21.798Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:38:21.801Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:39:21.151Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:39:21.157Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:39:21.160Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:42:25.807Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:42:25.811Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:42:25.813Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:42:28.484Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:42:28.490Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:42:28.493Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:43:13.250Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:43:13.255Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:43:13.257Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:43:29.214Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:43:29.219Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:43:29.221Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:43:31.028Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:43:31.034Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:43:31.037Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:43:32.753Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:43:32.759Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:43:32.761Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:43:41.184Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:43:41.189Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:43:41.192Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:43:42.696Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:43:42.700Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:43:42.702Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:43:46.128Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:43:46.134Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:43:46.136Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:43:47.382Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:43:47.387Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:43:47.390Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:43:48.485Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:43:48.494Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:43:48.497Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:43:50.470Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:43:50.479Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:43:50.482Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:59:34.133Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:59:34.138Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:59:34.140Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T07:59:36.379Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T07:59:36.385Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T07:59:36.388Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T08:01:13.872Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T08:01:13.879Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T08:01:13.882Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T08:01:21.482Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T08:01:21.488Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T08:01:21.490Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T08:01:34.007Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T08:01:34.013Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T08:01:34.016Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T08:01:35.784Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T08:01:35.791Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T08:01:35.794Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T08:01:42.312Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T08:01:42.319Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T08:01:42.323Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T08:01:53.642Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T08:01:53.648Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T08:01:53.650Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T08:02:01.670Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T08:02:01.678Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T08:02:01.681Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T08:02:05.889Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T08:02:05.898Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T08:02:05.902Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T08:02:09.498Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T08:02:09.506Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T08:02:09.510Z"}
+{"level":"info","message":"Database connection successfull","timestamp":"2026-05-19T08:04:58.128Z"}
+{"level":"info","message":"Redis client initiating connection to server...","timestamp":"2026-05-19T08:04:58.133Z"}
+{"level":"info","message":"Redis client connected and ready to use!","timestamp":"2026-05-19T08:04:58.135Z"}

@@ -38,14 +38,6 @@ const userSchema = new mongoose.Schema(
       default: false,
     },
 
-    otp: {
-      type: String,
-    },
-
-    otpExpiry: {
-      type: Date,
-    },
-
     isBlocked: {
       type: Boolean,
       default: false,

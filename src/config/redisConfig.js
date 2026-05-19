@@ -9,6 +9,10 @@ const otpKey = (email) =>{
   return `korexbase:sessions:${email}`;
 }
 
+const platformSettingsKey = () =>{
+  return `korexbase:platformSettings:settings`;
+}
+
 const client = createClient({
   socket: {
     host: host,
@@ -46,4 +50,4 @@ client.on("reconnecting", () => {
   logger.info("Redis client attempting to reconnect...");
 });
 
-export { client, otpKey};
+export { client, otpKey, platformSettingsKey};

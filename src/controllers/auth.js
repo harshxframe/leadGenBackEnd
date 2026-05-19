@@ -4,9 +4,13 @@ import { responseBody } from "../utils/responseBody.js";
 import { validateFormat } from "../utils/validateEmail.js";
 import values from "../config/values.js";
 import sendEmail from "../services/emailService.js";
-import { createOTPSession, verifyOTP } from "../services/redisService.js";
+import {
+  createOTPSession,
+  getAdminSettings,
+  verifyOTP,
+} from "../services/redisService.js";
 
-export const createAccount = (req, res) => {
+export const createAccount = async (req, res) => {
   try {
     const { name, email, profession, emailVerified, lastLoginAt } =
       req.body || {};
@@ -18,7 +22,11 @@ export const createAccount = (req, res) => {
     }
 
     // apiKey and credit and
-  } catch (e) {}
+  } catch (e) {
+    return res
+      .status(500)
+      .send(responseBody(true, false, 500, e.message || "Server Error", {}));
+  }
 };
 
 export const loginAccount = (req, res) => {
@@ -104,7 +112,7 @@ export const optVerification = async (req, res) => {
     }
     return res
       .status(400)
-      .send(responseBody(true, false, 400, "OTP not matched", {}));
+      .send(responseBody(true, false, 400, "Request does not exsit", {}));
   } catch (e) {
     return res
       .status(500)

@@ -1,6 +1,7 @@
 import { responseBody } from "../utils/responseBody.js";
 import PlatformSettings from "../models/admin.js";
 import { clearPlatformSettingsCache, getAdminSettings } from "../services/redisService.js";
+import User from "../models/user.js";
 
 export const updateAdminSettings = async (req, res) => {
   try {
@@ -152,6 +153,56 @@ export const getAdminSettingsController = async (req, res) => {
           settings,
         ),
       );
+  } catch (e) {
+    return res
+      .status(500)
+      .send(responseBody(true, false, 500, e.message || "Server Error", {}));
+  }
+};
+
+export const getAllUsers = async (req, res) => {
+  try {
+    let { page, limit } = req.query || {};
+
+    page = parseInt(page, 10);
+    limit = parseInt(limit, 10);
+
+    if (isNaN(page) || page < 1) page = 1;
+    if (isNaN(limit) || limit < 1) limit = 10;
+
+    const skip = (page - 1) * limit;
+
+    // 2. Fetch data and count total records concurrently for speed
+    const [users, totalUsers] = await Promise.all([
+      User.find()
+        .skip(skip)
+        .limit(limit)
+        .sort({ createdAt: -1 }) 
+        .lean(),
+      User.countDocuments()
+    ]);
+
+    const sanitizedUsers = users.map((user) => {
+      delete user["_id"];
+      delete user["createdAt"];
+      delete user["updatedAt"];
+      delete user["__v"];
+      return user;
+    });
+
+    const totalPages = Math.ceil(totalUsers / limit);
+
+    return res.status(200).send(
+      responseBody(false, true, 200, "Users retrieved successfully", {
+        users: sanitizedUsers,
+        pagination: {
+          totalUsers,
+          totalPages,
+          currentPage: page,
+          limit
+        }
+      })
+    );
   } catch (e) {
     return res
       .status(500)

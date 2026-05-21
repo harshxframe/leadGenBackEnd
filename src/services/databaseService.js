@@ -1,4 +1,5 @@
 import PlatformSettings from "../models/admin.js";
+import LeadJobs from "../models/Jobs.js";
 import User from "../models/user.js";
 import { serviceResponse } from "../utils/serviceResponseBody.js";
 
@@ -109,3 +110,16 @@ export const incrementSearchesService = async (id) => {
     return serviceResponse(false, e.message || "DB Error", {});
   }
 };
+
+export const createLeadJobService = async (payload) =>{
+  try{
+    const isJobCreated = await LeadJobs.create(payload);
+    if(!isJobCreated){
+      return serviceResponse(false, "Failed to create job", {});      
+    }
+    return serviceResponse(true, "Job Created successfully", { job: isJobCreated });
+
+  }catch(e){
+    return serviceResponse(false, e.message || "DB Error", {});
+  }
+}

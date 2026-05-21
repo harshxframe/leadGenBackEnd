@@ -13,6 +13,19 @@ const platformSettingsKey = () =>{
   return `korexbase:platformSettings:settings`;
 }
 
+const redisConnection = {
+  port:port,
+  host:host
+}
+
+const configuration = {
+  attempts: 1,
+  backoff: { type: "exponential", delay: 2000 },
+  removeOnComplete: true,
+  removeOnFail: true,
+}; // configuration for Queue Worker
+
+
 const client = createClient({
   socket: {
     host: host,
@@ -50,4 +63,4 @@ client.on("reconnecting", () => {
   logger.info("Redis client attempting to reconnect...");
 });
 
-export { client, otpKey, platformSettingsKey};
+export { client, otpKey, platformSettingsKey, redisConnection, configuration};

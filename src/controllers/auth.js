@@ -30,7 +30,7 @@ export const createAccount = async (req, res) => {
         .send(responseBody(true, false, 400, "Payload not satisfied", {}));
     }
 
-    const credit = getAdminSettings().freeCredit || 5;
+    const credit = await getAdminSettings().freeCredit || 5;
     const apiKey = generateApiKey();
     const finalPayload = {
       name: name,

@@ -33,6 +33,11 @@ const userSchema = new mongoose.Schema(
       default: 5,
     },
 
+    lockedCredits: {
+      type: Number,
+      default: 0,
+    },
+
     emailVerified: {
       type: Boolean,
       default: false,

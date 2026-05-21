@@ -5,4 +5,3 @@ export const leadJobQueue = new Queue("lead-job-queue", {
   connection: redisConnection,
   defaultJobOptions: configuration,
 });
-

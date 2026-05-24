@@ -6,9 +6,11 @@ import { generateJobKey } from "../utils/jobIdGenerator.js";
 import {
   createLeadJobService,
   getUserService,
+  reserveJobCreditService,
 } from "../services/databaseService.js";
 import { getAdminSettings } from "../services/redisService.js";
-import { leadJobQueue } from "../jobs/queue.js";
+import { leadJobQueue } from "../jobs/queue/queue.js";
+import { buildFinalLeads } from "../utils/leadsFilter.js";
 
 export const generateLeads = async (req, res) => {
   try {
@@ -31,17 +33,42 @@ export const generateLeads = async (req, res) => {
         .send(responseBody(true, false, 400, "Payload not satisfied", {}));
     }
 
-    const leadLimit = getDepthFromLimit(1);
+    const leadConfig = getScraperConfig(20);
     //const leads = await fetchBusinessLeads({ businessNiche, city, keywords });
     const leads = await fetchBusinessLeads({
       businessNiche,
       city,
       keywords,
-      leadLimit,
+      leadLimit: leadConfig.depth,
+      concurrency: leadConfig.concurrency,
+      extractEmails: false,
     });
 
+    const finalLeads = await buildFinalLeads({
+      leads: leads,
+      selectedFields: {
+        basicInfo: true,
+        contactInfo: true,
+        locationData: true,
+        emails: true,
+        reviews: true,
+        reviewAnalytics: true,
+        images: true,
+        ownerInfo: true,
+        socialLinks: true,
+        bookingPlatforms: true,
+        seoData: true,
+        techStack: true,
+        adsRunning: true,
+        whatsappNumber: true,
+        aiInsights: true,
+        aiOutreach: true,
+        leadScoring: true,
+      },
+    });
+    console.log(JSON.stringify(finalLeads));
     return res.send(
-      responseBody(false, true, 200, "Leads generated", { leads: leads }),
+      responseBody(false, true, 200, "Leads generated", { leads: finalLeads }),
     );
   } catch (e) {
     return res
@@ -98,7 +125,7 @@ export const placeJobRequest = async (req, res) => {
             true,
             false,
             400,
-            isSuccess.message || "User does not exsit",
+            isUserExsit.message || "User does not exsit",
             {},
           ),
         );
@@ -112,14 +139,15 @@ export const placeJobRequest = async (req, res) => {
         }),
       );
     }
+
     const scrapConfig = getScraperConfig(leadLimit);
     const { creditRules } = (await getAdminSettings()) || {};
     if (Object.keys(creditRules || {}).length === 0) {
       throw new Error("System Error");
     }
-
     const requestCost = creditRules[scrapConfig.tier] || 5;
 
+    // check the credit along with locked credit
     if (Number(user.credits) < Number(requestCost)) {
       return res
         .status(400)
@@ -130,6 +158,24 @@ export const placeJobRequest = async (req, res) => {
             400,
             "User don't have enough credits to perform this jobs",
             { events: { NO_CREDITS: "NO_ENOUGH_CREDITS" } },
+          ),
+        );
+    }
+
+    const reserveCredits = await reserveJobCreditService(
+      getId?.id,
+      requestCost,
+    );
+    if (!reserveCredits.success) {
+      return res
+        .status(400)
+        .send(
+          responseBody(
+            true,
+            false,
+            400,
+            isDBJobCreated.message || "Failed to detuct credit",
+            {},
           ),
         );
     }
@@ -156,8 +202,10 @@ export const placeJobRequest = async (req, res) => {
       city: city,
       keywords: keywords,
       config: scrapConfig,
+      selectedFields: selectedFields,
     };
 
+    return res.send(selectedFields);
     const leadJob = await leadJobQueue.add("lead-job-queue", queueDataPayload);
     if (leadJob?.id) {
       return res.send(

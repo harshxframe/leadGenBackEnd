@@ -69,11 +69,17 @@ export const getUserService = async (id) => {
 
 export const updateUserService = async (id, payload) => {
   try {
-    const updateUser = await User.findByIdAndUpdate(id,{$set:payload},{new:true});
+    const updateUser = await User.findByIdAndUpdate(
+      id,
+      { $set: payload },
+      { new: true },
+    );
     if (!updateUser) {
       return serviceResponse(false, "Failed to update user", {});
     }
-    return serviceResponse(true, "User updated successfull", { user: updateUser });
+    return serviceResponse(true, "User updated successfull", {
+      user: updateUser,
+    });
   } catch (e) {
     return serviceResponse(false, e.message || "DB Error", {});
   }
@@ -84,12 +90,14 @@ export const toggleBlockUserService = async (email, isBlocked) => {
     const updatedUser = await User.findOneAndUpdate(
       { email: email.toLowerCase().trim() },
       { isBlocked },
-      { new: true }
+      { new: true },
     );
     if (!updatedUser) {
       return serviceResponse(false, "User not found", {});
     }
-    return serviceResponse(true, "Block status updated successfully", { user: updatedUser });
+    return serviceResponse(true, "Block status updated successfully", {
+      user: updatedUser,
+    });
   } catch (e) {
     return serviceResponse(false, e.message || "DB Error", {});
   }
@@ -100,26 +108,45 @@ export const incrementSearchesService = async (id) => {
     const updatedUser = await User.findByIdAndUpdate(
       id,
       { $inc: { totalSearches: 1 } },
-      { new: true }
+      { new: true },
     );
     if (!updatedUser) {
       return serviceResponse(false, "User not found", {});
     }
-    return serviceResponse(true, "Search incremented successfully", { user: updatedUser });
+    return serviceResponse(true, "Search incremented successfully", {
+      user: updatedUser,
+    });
   } catch (e) {
     return serviceResponse(false, e.message || "DB Error", {});
   }
 };
 
-export const createLeadJobService = async (payload) =>{
-  try{
+export const createLeadJobService = async (payload) => {
+  try {
     const isJobCreated = await LeadJobs.create(payload);
-    if(!isJobCreated){
-      return serviceResponse(false, "Failed to create job", {});      
+    if (!isJobCreated) {
+      return serviceResponse(false, "Failed to create job", {});
     }
-    return serviceResponse(true, "Job Created successfully", { job: isJobCreated });
-
-  }catch(e){
+    return serviceResponse(true, "Job Created successfully", {
+      job: isJobCreated,
+    });
+  } catch (e) {
     return serviceResponse(false, e.message || "DB Error", {});
   }
-}
+};
+
+export const reserveJobCreditService = async (id, credits) => {
+  try {
+    const creditOperation = await User.findByIdAndUpdate(id, {
+      $inc: { credits: -credits, lockedCredits: credits },
+    });
+    
+    if (!creditOperation) {
+      return serviceResponse(false, "Failed to update credits", {});
+    }
+
+    return serviceResponse(true, "Credit updated successfully", {});
+  } catch (e) {
+    return serviceResponse(false, e.message || "DB Error", {});
+  }
+};

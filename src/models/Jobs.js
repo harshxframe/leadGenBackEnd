@@ -63,12 +63,27 @@ const jobSchema = new mongoose.Schema(
         default: true,
       },
 
+      contactInfo: {
+        type: Boolean,
+        default: true,
+      },
+
+      locationData: {
+        type: Boolean,
+        default: true,
+      },
+
       emails: {
         type: Boolean,
         default: false,
       },
 
       reviews: {
+        type: Boolean,
+        default: false,
+      },
+
+      reviewAnalytics: {
         type: Boolean,
         default: false,
       },
@@ -88,7 +103,42 @@ const jobSchema = new mongoose.Schema(
         default: false,
       },
 
+      bookingPlatforms: {
+        type: Boolean,
+        default: false,
+      },
+
+      seoData: {
+        type: Boolean,
+        default: false,
+      },
+
+      techStack: {
+        type: Boolean,
+        default: false,
+      },
+
+      adsRunning: {
+        type: Boolean,
+        default: false,
+      },
+
+      whatsappNumber: {
+        type: Boolean,
+        default: false,
+      },
+
+      aiInsights: {
+        type: Boolean,
+        default: false,
+      },
+
       aiOutreach: {
+        type: Boolean,
+        default: false,
+      },
+
+      leadScoring: {
         type: Boolean,
         default: false,
       },

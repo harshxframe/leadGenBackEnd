@@ -1,5 +1,5 @@
 import { runGoogleMapsScraper } from "./googleMapsScraper.service.js";
-import { buildSearchQuery } from "../utils/buildSearchQuery.js";
+import { buildSearchQueries } from "../utils/buildSearchQuery.js";
 import { parseJsonItems } from "../utils/jsonItemsParser.js";
 
 export const fetchBusinessLeads = async ({
@@ -7,9 +7,11 @@ export const fetchBusinessLeads = async ({
   city,
   keywords,
   leadLimit,
+  concurrency,
+  extractEmails
 }) => {
   try {
-    const searchQuery = buildSearchQuery({
+    const searchQuery = buildSearchQueries({
       businessNiche,
       city,
       keywords,
@@ -17,7 +19,12 @@ export const fetchBusinessLeads = async ({
 
     console.log(searchQuery);
 
-    const leads = await runGoogleMapsScraper(searchQuery, leadLimit);
+    const leads = await runGoogleMapsScraper({
+      queries: searchQuery,
+      depth: leadLimit,
+      concurrency: concurrency,
+      extractEmails: extractEmails,
+    });
     return leads;
   } catch (e) {
     throw new Error(e.message || "Failed to generate leads");

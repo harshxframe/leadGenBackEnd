@@ -1,9 +1,9 @@
-export const buildSearchQuery = ({
+export const buildSearchQueries = ({
   businessNiche,
   city,
   keywords,
 }) => {
-  const optionalKeywords = keywords.join(" ");
-
-  return `${businessNiche} ${optionalKeywords} in ${city}`;
+  return keywords.map((keyword) => {
+    return `${businessNiche} ${keyword} in ${city}`;
+  });
 };

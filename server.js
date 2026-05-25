@@ -5,7 +5,7 @@ const app = await initApp();
 const port = process.env.PORT || 2020;
 
 app.listen(port, async () => {
-  console.log("Server stated at 2000");
+  console.log("Server stated at 2020");
   try {
     // 3. Automatically spin up the ngrok tunnel
     const listener = await ngrok.forward({

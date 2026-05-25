@@ -140,12 +140,30 @@ export const reserveJobCreditService = async (id, credits) => {
     const creditOperation = await User.findByIdAndUpdate(id, {
       $inc: { credits: -credits, lockedCredits: credits },
     });
-    
+
     if (!creditOperation) {
       return serviceResponse(false, "Failed to update credits", {});
     }
 
     return serviceResponse(true, "Credit updated successfully", {});
+  } catch (e) {
+    return serviceResponse(false, e.message || "DB Error", {});
+  }
+};
+
+export const updateLeadsStatus = async (id, status) => {
+  try {
+    const updateStatus = await LeadJobs.findByIdAndUpdate(
+      id,
+      { status: status },
+      { new: true },
+    );
+
+    if (!updateStatus) {
+      return serviceResponse(false, "Failed to update status", {});
+    }
+
+    return serviceResponse(true, "Status updated successfully", {});
   } catch (e) {
     return serviceResponse(false, e.message || "DB Error", {});
   }

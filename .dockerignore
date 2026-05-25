@@ -1,0 +1,21 @@
+# Git
+.git
+.gitignore
+
+# Dependencies
+node_modules/
+vendor/
+
+# Environment and Secrets
+.env
+*.pem
+*.key
+
+# Local IDE settings
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+npm-debug.log*
+tmp/

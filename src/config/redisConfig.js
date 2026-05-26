@@ -19,7 +19,7 @@ const redisConnection = {
 }
 
 const configuration = {
-  attempts: 1,
+  attempts: 2,
   backoff: { type: "exponential", delay: 2000 },
   removeOnComplete: true,
   removeOnFail: true,

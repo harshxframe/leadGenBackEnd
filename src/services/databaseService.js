@@ -168,3 +168,21 @@ export const updateLeadsStatus = async (id, status) => {
     return serviceResponse(false, e.message || "DB Error", {});
   }
 };
+
+
+export const leadsSavingService = async (userId, jobDBId, leads) =>{
+  try{
+
+
+    if (!saved) {
+      return serviceResponse(false, "Failed to save leads", {});
+    }
+
+    return serviceResponse(true, "Leads saved successfully", {});
+  }catch(e){
+    return serviceResponse(false, e.message || "DB Error", {});
+  }
+}
+
+
+

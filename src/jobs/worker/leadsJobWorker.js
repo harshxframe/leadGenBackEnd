@@ -7,8 +7,10 @@ import { fetchBusinessLeads } from "../../services/leadGenerator.service.js";
 import { getItemsinLimit } from "../../utils/getRequestAmountOfLead.js";
 import { buildFinalLeads } from "../../utils/leadsFilter.js";
 import { leadsWorkerProcessor } from "../../services/LeadsWorkerProcessor.js";
+import { updateLeadsStatus } from "../../services/databaseService.js";
 
-const DBConnectionUrl = env.MONGO_URI;
+const MONGO_URI_PRIMARY = env.MONGO_URI_PRIMARY;
+
 // 1. Register listeners ONCE at the top level
 mongoose.connection.on("connected", () =>
   logger.info("DB connection successful with DB worker"),
@@ -22,17 +24,67 @@ mongoose.connection.on("disconnected", () =>
 
 async function LeadsJobWorker() {
   try {
-    await mongoose.connect(DBConnectionUrl, {
+    await mongoose.connect(MONGO_URI_PRIMARY, {
       maxPoolSize: 10, // Adjust this based on your workerConcurreny
     });
-    logger.error("Started, Leads Job Worker", { error: e });
+   
+    logger.info("Started, Leads Job Worker", { error: e });
     const worker = new Worker("lead-job-queue", leadsWorkerProcessor);
 
-    worker.on("completed", async (job) => {});
+    worker.on("completed", async (job) => {
+      try {
+        await updateLeadsStatus(job.data?.dbLevelId, "completed");
+      } catch (e) {
+        logger.error("error on complete status update", {
+          jobId: job?.id,
+          error: e.message,
+        });
+      }
+    });
 
-    worker.on("error", async (job) => {});
+    worker.on("failed", (job, err) => {
+      try {
+        const attemptsMade = job?.attemptsMade;
+        const maxAttempts = job.opts?.attempts ?? 2;
+        if (attemptsMade >= maxAttempts) {
+          logger.error("Lead job permanently failed", {
+            jobId: job.id,
+            error: err.message,
+            attemptsMade,
+          });
+        } else {
+          return;
+        }
+      } catch (e) {
+        logger.error("Lead failed handler error", {
+          jobId: job?.id,
+          error: e.message,
+        });
+      }
+    });
+    worker.on("error", (err) => {
+      logger.error("Lead worker runtime error", {
+        error: err.message,
+      });
+    });
 
-    worker.on("failed", async (job) => {});
+    const shutdown = async () => {
+      logger.info("ChatMessage worker shutting down");
+      try {
+        await worker.close();
+        await mongoose.disconnect();
+        logger.info("ChatMessage worker shutdown complete");
+        process.exit(0);
+      } catch (err) {
+        logger.error("ChatMessage worker shutdown failed", {
+          error: err.message,
+        });
+        process.exit(1);
+      }
+    };
+
+    process.on("SIGINT", shutdown);
+    process.on("SIGTERM", shutdown);
   } catch (e) {
     logger.error("Failed to start Leads Job Worker", { error: e });
   }

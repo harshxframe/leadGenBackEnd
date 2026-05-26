@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const venv = {
-    MONGO_URI:dotenv.MONGO_URI
+    MONGO_URI_PRIMARY:dotenv.MONGO_URI_PRIMARY,
 }
 
 

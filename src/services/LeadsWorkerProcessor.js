@@ -4,6 +4,7 @@ import { withTimeOut } from "../utils/withTimeOut.js";
 export async function leadsWorkerProcessor(job) {
   try {
     const {
+      userId,
       jobId,
       dbLevelId,
       businessNiche,
@@ -15,6 +16,7 @@ export async function leadsWorkerProcessor(job) {
       concurrency,
     } = job.data || {};
     if (
+      !userId ||
       !jobId ||
       !dbLevelId ||
       !businessNiche ||
@@ -57,6 +59,15 @@ export async function leadsWorkerProcessor(job) {
         selectedFields: selectedFields,
       });
       //Now need to save in DB and change queue status
+      // For DB userId, JobDbId, Leads.
+      // DB operation
+
+      const saveInDB = await leadsSavingService(userId, JobDbId, leads);
+      
+
+
+
+
 
 
 

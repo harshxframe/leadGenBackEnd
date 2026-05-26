@@ -197,9 +197,10 @@ export const placeJobRequest = async (req, res) => {
     }
     const dbJobId = isDBJobCreated.data.job?.jobId;
     const dbLevelId = isDBJobCreated.data.job?._id;
-  
+
     const queueDataPayload = {
-      dbLevelId:dbLevelId,
+      userId: getId?.id,
+      dbLevelId: dbLevelId,
       jobId: dbJobId,
       businessNiche: businessNiche,
       city: city,
@@ -207,7 +208,7 @@ export const placeJobRequest = async (req, res) => {
       config: scrapConfig,
       selectedFields: selectedFields,
     };
-console.log(JSON.stringify(queueDataPayload));
+    console.log(JSON.stringify(queueDataPayload));
     const leadJob = await leadJobQueue.add("lead-job-queue", queueDataPayload);
     if (leadJob?.id) {
       return res.send(
@@ -219,8 +220,7 @@ console.log(JSON.stringify(queueDataPayload));
     return res
       .status(400)
       .send(responseBody(true, false, 400, "Failed to place request", {}));
-
-    } catch (e) {
+  } catch (e) {
     return res
       .status(500)
       .send(responseBody(true, false, 500, e.message || "Server Error", {}));

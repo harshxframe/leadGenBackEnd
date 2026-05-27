@@ -344,10 +344,6 @@ leadSchema.index({
 });
 
 leadSchema.index({
-  "locationData.city": 1,
-});
-
-leadSchema.index({
   "leadScoring.score": -1,
 });
 

@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import crypto from "crypto";
 import { spawn } from "child_process";
+import logger from "../utils/logger.js"
 
 export const runGoogleMapsScraper = async ({
   queries,
@@ -107,15 +108,15 @@ export const runGoogleMapsScraper = async ({
         dockerArgs,
       );
 
-      console.log("RUNNING SCRAPER...");
+      logger.info("RUNNING SCRAPER...")
 
       // STDOUT
       dockerProcess.stdout.on(
         "data",
         (data) => {
-          console.log(
-            `[SCRAPER STDOUT]: ${data.toString()}`,
-          );
+          // console.log(
+          //   `[SCRAPER STDOUT]: ${data.toString()}`,
+          // );
         },
       );
 
@@ -123,9 +124,9 @@ export const runGoogleMapsScraper = async ({
       dockerProcess.stderr.on(
         "data",
         (data) => {
-          console.log(
-            `[SCRAPER STDERR]: ${data.toString()}`,
-          );
+          // console.log(
+          //   `[SCRAPER STDERR]: ${data.toString()}`,
+          // );
         },
       );
 
@@ -133,9 +134,9 @@ export const runGoogleMapsScraper = async ({
       dockerProcess.on(
         "error",
         async (error) => {
-          console.log(
-            `[SCRAPER ERROR]: ${error.message}`,
-          );
+          // console.log(
+          //   `[SCRAPER ERROR]: ${error.message}`,
+          // );
 
           // CLEANUP
           await fs.rm(tempDir, {

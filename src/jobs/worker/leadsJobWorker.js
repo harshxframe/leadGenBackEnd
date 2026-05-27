@@ -8,8 +8,10 @@ import { getItemsinLimit } from "../../utils/getRequestAmountOfLead.js";
 import { buildFinalLeads } from "../../utils/leadsFilter.js";
 import { leadsWorkerProcessor } from "../../services/LeadsWorkerProcessor.js";
 import { updateLeadsStatus } from "../../services/databaseService.js";
+import { connectRedis, redisConnection } from "../../config/redisConfig.js";
+import { getAdminSettings } from "../../services/redisService.js";
 
-const MONGO_URI_PRIMARY = env.MONGO_URI_PRIMARY;
+const MONGO_DB_URI = String(env.MONGO_URI_PRIMARY);
 
 // 1. Register listeners ONCE at the top level
 mongoose.connection.on("connected", () =>
@@ -24,12 +26,16 @@ mongoose.connection.on("disconnected", () =>
 
 async function LeadsJobWorker() {
   try {
-    await mongoose.connect(MONGO_URI_PRIMARY, {
+    await mongoose.connect(MONGO_DB_URI, {
       maxPoolSize: 10, // Adjust this based on your workerConcurreny
     });
-   
-    logger.info("Started, Leads Job Worker", { error: e });
-    const worker = new Worker("lead-job-queue", leadsWorkerProcessor);
+    await connectRedis();
+
+    logger.info("Started, Leads Job Worker");
+    const worker = new Worker("lead-job-queue", leadsWorkerProcessor, {
+      connection: redisConnection,
+      concurrency: (await getAdminSettings().maxConcurrentJobs) || 3,
+    });
 
     worker.on("completed", async (job) => {
       try {
@@ -42,11 +48,17 @@ async function LeadsJobWorker() {
       }
     });
 
-    worker.on("failed", (job, err) => {
+    worker.on("failed", async (job, err) => {
       try {
         const attemptsMade = job?.attemptsMade;
         const maxAttempts = job.opts?.attempts ?? 2;
         if (attemptsMade >= maxAttempts) {
+          await updateLeadsStatus(
+            job.data?.dbLevelId,
+            "failed",
+            true,
+            err.message,
+          );
           logger.error("Lead job permanently failed", {
             jobId: job.id,
             error: err.message,
@@ -69,14 +81,14 @@ async function LeadsJobWorker() {
     });
 
     const shutdown = async () => {
-      logger.info("ChatMessage worker shutting down");
+      logger.info("Lead worker shutting down");
       try {
         await worker.close();
         await mongoose.disconnect();
-        logger.info("ChatMessage worker shutdown complete");
+        logger.info("Lead worker shutdown complete");
         process.exit(0);
       } catch (err) {
-        logger.error("ChatMessage worker shutdown failed", {
+        logger.error("Lead worker shutdown failed", {
           error: err.message,
         });
         process.exit(1);
@@ -89,3 +101,5 @@ async function LeadsJobWorker() {
     logger.error("Failed to start Leads Job Worker", { error: e });
   }
 }
+
+LeadsJobWorker();

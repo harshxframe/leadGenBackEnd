@@ -199,6 +199,8 @@ export const placeJobRequest = async (req, res) => {
     const dbLevelId = isDBJobCreated.data.job?._id;
 
     const queueDataPayload = {
+      name:user?.name,
+      userEmail:user?.email,
       userId: getId?.id,
       dbLevelId: dbLevelId,
       jobId: dbJobId,

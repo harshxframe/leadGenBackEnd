@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: '/Users/harsh/projects/aileadGenerator/.env', override: false });
 
-export const venv = {
-    MONGO_URI_PRIMARY:dotenv.MONGO_URI_PRIMARY,
+export const env = {
+    MONGO_URI_PRIMARY:process.env.MONGO_URI_PRIMARY,
 }
 
 

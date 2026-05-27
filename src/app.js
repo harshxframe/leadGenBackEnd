@@ -2,7 +2,6 @@ import express from "express";
 import generateLeadsRouter from "./routes/generateLeads.js";
 import dotenv from "dotenv";
 import { connectDB } from "./config/databaseConnection.js";
-import { client } from "./config/redisConfig.js";
 import logger from "./utils/logger.js";
 import { invalidRoute } from "./middlewares/invalidRoute.js";
 import { systemHealthMiddleware } from "./middlewares/health.js";
@@ -13,12 +12,13 @@ import {
   checkMaintenance,
   checkNewRequest,
 } from "./middlewares/accessValidator.js";
+import { connectRedis } from "./config/redisConfig.js";
 dotenv.config();
 
 const initApp = async () => {
   try {
     await connectDB();
-    await client.connect();
+    await connectRedis();
     const app = express();
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));

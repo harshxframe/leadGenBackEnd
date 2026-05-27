@@ -41,6 +41,28 @@ const client = createClient({
   },
 });
 
+const connectRedis =
+  async () => {
+    try {
+      if (!client.isOpen) {
+        await client.connect();
+
+        logger.info(
+          "Redis connected",
+        );
+      }
+    } catch (e) {
+      logger.error(
+        "Redis connection failed",
+        {
+          error: e.message,
+        },
+      );
+
+      throw e;
+    }
+  };
+
 const retry = 0;
 
 client.on("error", (err) => {
@@ -63,4 +85,4 @@ client.on("reconnecting", () => {
   logger.info("Redis client attempting to reconnect...");
 });
 
-export { client, otpKey, platformSettingsKey, redisConnection, configuration};
+export { client, connectRedis, otpKey, platformSettingsKey, redisConnection, configuration};

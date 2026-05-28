@@ -141,6 +141,7 @@ export const placeJobRequest = async (req, res) => {
     }
 
     const scrapConfig = getScraperConfig(leadLimit);
+    keywords = keywords.slice(0, scrapConfig.maxKeyowrds);
     const { creditRules } = (await getAdminSettings()) || {};
     if (Object.keys(creditRules || {}).length === 0) {
       throw new Error("System Error");

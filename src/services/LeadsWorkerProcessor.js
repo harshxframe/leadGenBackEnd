@@ -72,9 +72,8 @@ export async function leadsWorkerProcessor(job) {
     if (Array.isArray(generateLeads) && generateLeads.length !== 0) {
       const requestedOnOfLeads = getItemsinLimit(
         generateLeads,
-        config.leadLimit,
+        config.limit,
       );
-
       const processLeads = buildFinalLeads({
         leads: requestedOnOfLeads,
         selectedFields: selectedFields,

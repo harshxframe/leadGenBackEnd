@@ -8,6 +8,7 @@ import {
 } from "../../services/databaseService.js";
 import { connectRedis, redisConnection } from "../../config/redisConfig.js";
 import { getAdminSettings } from "../../services/redisService.js";
+import { leadsWorkerProcessor } from "../../services/LeadsWorkerProcessor.js";
 
 const MONGO_DB_URI = String(env.MONGO_URI_PRIMARY);
 
@@ -30,15 +31,15 @@ async function LeadsJobWorker() {
     // Prevent duplicate connections if already connected
     if (mongoose.connection.readyState === 0) {
       await mongoose.connect(MONGO_DB_URI, {
-        maxPoolSize: 10, 
+        maxPoolSize: 10,
       });
     }
     await connectRedis();
 
     logger.info("Started, Leads Job Worker");
-    
+
     // Assign to module-scoped variable for shutdown access
-    workerInstance = new Worker("lead-job-queue", "../../services/LeadsWorkerProcessor.js", {
+    workerInstance = new Worker("lead-job-queue", leadsWorkerProcessor, {
       connection: redisConnection,
       concurrency: 1,
     });
@@ -59,7 +60,9 @@ async function LeadsJobWorker() {
     // --- FAILURE HANDLER ---
     workerInstance.on("failed", async (job, err) => {
       if (!job) {
-        logger.error("Job failed but job object is undefined", { error: err?.message });
+        logger.error("Job failed but job object is undefined", {
+          error: err?.message,
+        });
         return;
       }
 
@@ -69,7 +72,7 @@ async function LeadsJobWorker() {
 
         if (attemptsMade >= maxAttempts) {
           const { userId, config } = job.data || {};
-          
+
           if (
             userId &&
             typeof config === "object" &&
@@ -79,15 +82,19 @@ async function LeadsJobWorker() {
             // FIX: Fetch fresh settings dynamically to avoid stale configurations
             const freshAdminSettings = await getAdminSettings();
             const tierKey = job.data?.config?.tier;
-            const creditsToRelease = freshAdminSettings?.creditRules?.[tierKey] || 3;
+            const creditsToRelease =
+              freshAdminSettings?.creditRules?.[tierKey] || 3;
 
-            const releaseCredit = await releaseCreditService(userId, creditsToRelease);
-            
+            const releaseCredit = await releaseCreditService(
+              userId,
+              creditsToRelease,
+            );
+
             if (!releaseCredit?.success) {
               logger.error("Failed to release user credits", {
                 error: true,
                 jobId: job.id,
-                reason: releaseCredit?.message
+                reason: releaseCredit?.message,
               });
             }
           }
@@ -119,7 +126,6 @@ async function LeadsJobWorker() {
         error: err.message,
       });
     });
-
   } catch (e) {
     logger.error("Failed to start Leads Job Worker", { error: e.message });
   }

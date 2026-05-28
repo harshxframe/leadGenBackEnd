@@ -79,7 +79,7 @@ export const generateLeads = async (req, res) => {
 
 export const placeJobRequest = async (req, res) => {
   try {
-    const { token, businessNiche, city, keywords, leadLimit, selectedFields } =
+    let { token, businessNiche, city, keywords, leadLimit, selectedFields } =
       req.body || {};
 
     if (
@@ -104,17 +104,6 @@ export const placeJobRequest = async (req, res) => {
     }
 
     const uniqueJobId = generateJobKey();
-
-    const payload = {
-      userId: getId?.id,
-      jobId: uniqueJobId,
-      requestSource: "dashboard",
-      businessNiche: businessNiche,
-      city: city,
-      keywords: keywords,
-      leadLimit: leadLimit,
-      selectedFields: selectedFields,
-    };
 
     const isUserExsit = await getUserService(getId?.id);
     if (!isUserExsit.success) {
@@ -142,6 +131,16 @@ export const placeJobRequest = async (req, res) => {
 
     const scrapConfig = getScraperConfig(leadLimit);
     keywords = keywords.slice(0, scrapConfig.maxKeyowrds);
+    const payload = {
+      userId: getId?.id,
+      jobId: uniqueJobId,
+      requestSource: "dashboard",
+      businessNiche: businessNiche,
+      city: city,
+      keywords: keywords,
+      leadLimit: leadLimit,
+      selectedFields: selectedFields,
+    };
     const { creditRules } = (await getAdminSettings()) || {};
     if (Object.keys(creditRules || {}).length === 0) {
       throw new Error("System Error");
@@ -200,8 +199,8 @@ export const placeJobRequest = async (req, res) => {
     const dbLevelId = isDBJobCreated.data.job?._id;
 
     const queueDataPayload = {
-      name:user?.name,
-      userEmail:user?.email,
+      name: user?.name,
+      userEmail: user?.email,
       userId: getId?.id,
       dbLevelId: dbLevelId,
       jobId: dbJobId,

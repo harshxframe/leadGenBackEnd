@@ -2,11 +2,6 @@ import { Worker } from "bullmq";
 import mongoose from "mongoose";
 import { env } from "../../config/env.js";
 import logger from "../../utils/logger.js";
-import { withTimeOut } from "../../utils/withTimeOut.js";
-import { fetchBusinessLeads } from "../../services/leadGenerator.service.js";
-import { getItemsinLimit } from "../../utils/getRequestAmountOfLead.js";
-import { buildFinalLeads } from "../../utils/leadsFilter.js";
-import { leadsWorkerProcessor } from "../../services/LeadsWorkerProcessor.js";
 import {
   releaseCreditService,
   updateLeadsStatus,
@@ -16,7 +11,10 @@ import { getAdminSettings } from "../../services/redisService.js";
 
 const MONGO_DB_URI = String(env.MONGO_URI_PRIMARY);
 
-// 1. Register listeners ONCE at the top level
+// Global references for safe process shutdown scoping
+let workerInstance = null;
+
+// 1. Register database event listeners ONCE globally
 mongoose.connection.on("connected", () =>
   logger.info("DB connection successful with DB worker"),
 );
@@ -29,93 +27,125 @@ mongoose.connection.on("disconnected", () =>
 
 async function LeadsJobWorker() {
   try {
-    await mongoose.connect(MONGO_DB_URI, {
-      maxPoolSize: 10, // Adjust this based on your workerConcurreny
-    });
+    // Prevent duplicate connections if already connected
+    if (mongoose.connection.readyState === 0) {
+      await mongoose.connect(MONGO_DB_URI, {
+        maxPoolSize: 10, 
+      });
+    }
     await connectRedis();
-    const adminSettings = await getAdminSettings();
 
     logger.info("Started, Leads Job Worker");
-    const worker = new Worker("lead-job-queue", leadsWorkerProcessor, {
+    
+    // Assign to module-scoped variable for shutdown access
+    workerInstance = new Worker("lead-job-queue", "../../services/LeadsWorkerProcessor.js", {
       connection: redisConnection,
       concurrency: 1,
     });
 
-    worker.on("completed", async (job) => {
+    // --- SUCCESS HANDLER ---
+    workerInstance.on("completed", async (job) => {
+      if (!job) return;
       try {
         await updateLeadsStatus(job.data?.dbLevelId, "completed");
       } catch (e) {
         logger.error("error on complete status update", {
-          jobId: job?.id,
+          jobId: job.id,
           error: e.message,
         });
       }
     });
 
-    worker.on("failed", async (job, err) => {
+    // --- FAILURE HANDLER ---
+    workerInstance.on("failed", async (job, err) => {
+      if (!job) {
+        logger.error("Job failed but job object is undefined", { error: err?.message });
+        return;
+      }
+
       try {
-        const attemptsMade = job?.attemptsMade;
+        const attemptsMade = job.attemptsMade ?? 0;
         const maxAttempts = job.opts?.attempts ?? 2;
+
         if (attemptsMade >= maxAttempts) {
           const { userId, config } = job.data || {};
+          
           if (
             userId &&
             typeof config === "object" &&
             config !== null &&
             Object.keys(config).length !== 0
           ) {
-            await releaseCreditService(
-              job.data?.userId,
-              adminSettings?.creditRules?.[job.data?.config?.tier] || 3,
-            );
+            // FIX: Fetch fresh settings dynamically to avoid stale configurations
+            const freshAdminSettings = await getAdminSettings();
+            const tierKey = job.data?.config?.tier;
+            const creditsToRelease = freshAdminSettings?.creditRules?.[tierKey] || 3;
+
+            const releaseCredit = await releaseCreditService(userId, creditsToRelease);
+            
+            if (!releaseCredit?.success) {
+              logger.error("Failed to release user credits", {
+                error: true,
+                jobId: job.id,
+                reason: releaseCredit?.message
+              });
+            }
           }
+
           await updateLeadsStatus(
             job.data?.dbLevelId,
             "failed",
             true,
-            err.message,
+            err?.message || "Unknown error",
           );
+
           logger.error("Lead job permanently failed", {
             jobId: job.id,
-            error: err.message,
+            error: err?.message,
             attemptsMade,
           });
-        } else {
-          return;
         }
       } catch (e) {
-        logger.error("Lead failed handler error", {
+        logger.error("Lead failed handler internal error", {
           jobId: job?.id,
           error: e.message,
         });
       }
     });
-    worker.on("error", (err) => {
+
+    // --- RUNTIME ERROR HANDLER ---
+    workerInstance.on("error", (err) => {
       logger.error("Lead worker runtime error", {
         error: err.message,
       });
     });
 
-    const shutdown = async () => {
-      logger.info("Lead worker shutting down");
-      try {
-        await worker.close();
-        await mongoose.disconnect();
-        logger.info("Lead worker shutdown complete");
-        process.exit(0);
-      } catch (err) {
-        logger.error("Lead worker shutdown failed", {
-          error: err.message,
-        });
-        process.exit(1);
-      }
-    };
-
-    process.on("SIGINT", shutdown);
-    process.on("SIGTERM", shutdown);
   } catch (e) {
-    logger.error("Failed to start Leads Job Worker", { error: e });
+    logger.error("Failed to start Leads Job Worker", { error: e.message });
   }
 }
 
+// --- SAFE CLEAN SHUTDOWN MANAGER ---
+const shutdown = async (signal) => {
+  logger.info(`Lead worker received ${signal}, shutting down...`);
+  try {
+    if (workerInstance) {
+      await workerInstance.close();
+      logger.info("BullMQ worker pool drained and closed.");
+    }
+    await mongoose.disconnect();
+    logger.info("Lead worker shutdown completely clean.");
+    process.exit(0);
+  } catch (err) {
+    logger.error("Lead worker shutdown failed during disconnect cleanup", {
+      error: err.message,
+    });
+    process.exit(1);
+  }
+};
+
+process.on("SIGINT", () => shutdown("SIGINT"));
+process.on("SIGTERM", () => shutdown("SIGTERM"));
+
+// Execute Worker Bootstrapper
 LeadsJobWorker();

@@ -513,11 +513,29 @@ export const detuctCreditService = async (
 
 export const releaseCreditService = async (userId, credits) => {
   try {
-    await User.findByIdAndUpdate(userId, {
-      $inc: { credits: credits, lockedCredits: -credits },
-    });
+    if (!userId || typeof credits !== "number" || credits <= 0) {
+      return serviceResponse(false, "Invalid user ID or credit amount", {});
+    }
+
+    const updatedUser = await User.findOneAndUpdate(
+      { 
+        _id: userId, 
+        lockedCredits: { $gte: credits } 
+      },
+      {
+        $inc: { credits: credits, lockedCredits: -credits },
+      },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return serviceResponse(false, "User not found or insufficient locked credits", {});
+    }
+
     return serviceResponse(true, "Credit updated successfully", {});
   } catch (e) {
-    return serviceResponse(false, e.message || "DB Error", {});
+    // 4. Secure logging (avoids leaking raw DB errors to the client)
+    console.error("Database Error in releaseCreditService:", e);
+    return serviceResponse(false, "Database operation failed", {});
   }
 };

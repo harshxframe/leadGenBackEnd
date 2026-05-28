@@ -34,7 +34,7 @@ async function LeadsJobWorker() {
     logger.info("Started, Leads Job Worker");
     const worker = new Worker("lead-job-queue", leadsWorkerProcessor, {
       connection: redisConnection,
-      concurrency: (await getAdminSettings().maxConcurrentJobs) || 3,
+      concurrency: 1,
     });
 
     worker.on("completed", async (job) => {

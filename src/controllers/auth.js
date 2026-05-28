@@ -29,8 +29,8 @@ export const createAccount = async (req, res) => {
         .status(400)
         .send(responseBody(true, false, 400, "Payload not satisfied", {}));
     }
-
-    const credit = await getAdminSettings().freeCredit || 5;
+    const adminSettings = await getAdminSettings();
+    const credit = adminSettings.freeCredit || 5;
     const apiKey = generateApiKey();
     const finalPayload = {
       name: name,
@@ -218,11 +218,16 @@ export const toggleBlockUser = async (req, res) => {
   try {
     const { email, isBlocked } = req.body || {};
 
-    const isValidEmail = typeof email === 'string' && email.includes('@') && email.trim().length > 3;
-    const isValidBoolean = typeof isBlocked === 'boolean';
+    const isValidEmail =
+      typeof email === "string" &&
+      email.includes("@") &&
+      email.trim().length > 3;
+    const isValidBoolean = typeof isBlocked === "boolean";
 
     if (!isValidEmail || !isValidBoolean) {
-      return res.status(400).send(responseBody(true, false, 400, "Payload not satisfied", {}));
+      return res
+        .status(400)
+        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
     }
 
     const isSuccess = await toggleBlockUserService(email.trim(), isBlocked);
@@ -240,9 +245,13 @@ export const toggleBlockUser = async (req, res) => {
         }),
       );
     }
-    return res.status(400).send(responseBody(true, false, 400, isSuccess.message, {}));
+    return res
+      .status(400)
+      .send(responseBody(true, false, 400, isSuccess.message, {}));
   } catch (e) {
-    return res.status(500).send(responseBody(true, false, 500, e.message || "Server Error", {}));
+    return res
+      .status(500)
+      .send(responseBody(true, false, 500, e.message || "Server Error", {}));
   }
 };
 
@@ -251,13 +260,17 @@ export const incrementSearches = async (req, res) => {
   try {
     const { token } = req.body || {};
 
-    if (!token || typeof token !== 'string' || token.trim().length === 0) {
-      return res.status(400).send(responseBody(true, false, 400, "Token is required", {}));
+    if (!token || typeof token !== "string" || token.trim().length === 0) {
+      return res
+        .status(400)
+        .send(responseBody(true, false, 400, "Token is required", {}));
     }
 
     const getId = readToken(token);
     if (!getId) {
-      return res.status(403).send(responseBody(true, false, 403, "Invalid token", {}));
+      return res
+        .status(403)
+        .send(responseBody(true, false, 403, "Invalid token", {}));
     }
 
     const isSuccess = await incrementSearchesService(getId.id);
@@ -275,9 +288,13 @@ export const incrementSearches = async (req, res) => {
         }),
       );
     }
-    return res.status(400).send(responseBody(true, false, 400, isSuccess.message, {}));
+    return res
+      .status(400)
+      .send(responseBody(true, false, 400, isSuccess.message, {}));
   } catch (e) {
-    return res.status(500).send(responseBody(true, false, 500, e.message || "Server Error", {}));
+    return res
+      .status(500)
+      .send(responseBody(true, false, 500, e.message || "Server Error", {}));
   }
 };
 

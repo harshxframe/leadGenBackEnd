@@ -6,35 +6,41 @@ export const getScraperConfig = (limit) => {
   const target = limit * 1.2; // Add 20% buffer
 
   const config = {
+    // Keyowrds 1 - 3
     depth: 1,
     tier: "small",
-    concurrency: 1,
+    concurrency: 2,
     limit: limit,
+    maxKeyowrds: 3,
   };
 
   if (target <= 60) {
     // 50 * 1.2
-    config.depth = 1;
+    config.depth = 1; // Keyowrds 1 - 3
     config.tier = "small";
-    config.concurrency = 1;
-    config.limit = limit;
-  } else if (target <= 120) {
-    // 100 * 1.2
-    config.depth = 3;
-    config.tier = "medium";
     config.concurrency = 2;
     config.limit = limit;
+    config.maxKeyowrds = 3;
+  } else if (target <= 120) {
+    // 100 * 1.2
+    config.depth = 2; // Keyowrds 3 - 6
+    config.tier = "medium";
+    config.concurrency = 4;
+    config.limit = limit;
+    config.maxKeyowrds = 6;
   } else if (target <= 300) {
     // 250 * 1.2
-    config.depth = 5;
+    config.depth = 3; // Keyowrds 6 - 10
     config.tier = "large";
-    config.concurrency = 4; // Bumped up for efficiency
+    config.concurrency = 5; // Bumped up for efficiency
     config.limit = limit;
+    config.maxKeyowrds = 10;
   } else {
-    config.depth = 10; // Increased to ensure 500+ coverage
+    config.depth = 4; // Increased to ensure 500+ coverage // Keyowrds 10 - 15
     config.tier = "huge";
-    config.concurrency = 6; // Optimized for performance
+    config.concurrency = 5; // Optimized for performance
     config.limit = limit;
+    config.maxKeyowrds = 15;
   }
 
   return config;

@@ -7,7 +7,10 @@ import { fetchBusinessLeads } from "../../services/leadGenerator.service.js";
 import { getItemsinLimit } from "../../utils/getRequestAmountOfLead.js";
 import { buildFinalLeads } from "../../utils/leadsFilter.js";
 import { leadsWorkerProcessor } from "../../services/LeadsWorkerProcessor.js";
-import { updateLeadsStatus } from "../../services/databaseService.js";
+import {
+  releaseCreditService,
+  updateLeadsStatus,
+} from "../../services/databaseService.js";
 import { connectRedis, redisConnection } from "../../config/redisConfig.js";
 import { getAdminSettings } from "../../services/redisService.js";
 
@@ -30,6 +33,7 @@ async function LeadsJobWorker() {
       maxPoolSize: 10, // Adjust this based on your workerConcurreny
     });
     await connectRedis();
+    const adminSettings = await getAdminSettings();
 
     logger.info("Started, Leads Job Worker");
     const worker = new Worker("lead-job-queue", leadsWorkerProcessor, {
@@ -53,6 +57,18 @@ async function LeadsJobWorker() {
         const attemptsMade = job?.attemptsMade;
         const maxAttempts = job.opts?.attempts ?? 2;
         if (attemptsMade >= maxAttempts) {
+          const { userId, config } = job.data || {};
+          if (
+            userId &&
+            typeof config === "object" &&
+            config !== null &&
+            Object.keys(config).length !== 0
+          ) {
+            await releaseCreditService(
+              job.data?.userId,
+              adminSettings?.creditRules?.[job.data?.config?.tier] || 3,
+            );
+          }
           await updateLeadsStatus(
             job.data?.dbLevelId,
             "failed",

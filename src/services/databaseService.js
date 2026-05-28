@@ -510,3 +510,14 @@ export const detuctCreditService = async (
     return serviceResponse(false, e.message || "DB Error", {});
   }
 };
+
+export const releaseCreditService = async (userId, credits) => {
+  try {
+    await User.findByIdAndUpdate(userId, {
+      $inc: { credits: credits, lockedCredits: -credits },
+    });
+    return serviceResponse(true, "Credit updated successfully", {});
+  } catch (e) {
+    return serviceResponse(false, e.message || "DB Error", {});
+  }
+};

@@ -66,16 +66,13 @@ export async function leadsWorkerProcessor(job) {
         leadLimit: config.depth,
         concurrency: config.concurrency,
         extractEmails: selectedFields?.emails,
+        limit: config.limit,
       }),
       3600 * 1000,
     );
     if (Array.isArray(generateLeads) && generateLeads.length !== 0) {
-      const requestedOnOfLeads = getItemsinLimit(
-        generateLeads,
-        config.limit,
-      );
       const processLeads = buildFinalLeads({
-        leads: requestedOnOfLeads,
+        leads: generateLeads,
         selectedFields: selectedFields,
       });
 

@@ -195,8 +195,7 @@ export const leadsCompletedEmailTemplate = ({
 
   <title>Korexbase Leads Ready</title>
 </head>
-
-<body
+  <body
   style="
     margin: 0;
     padding: 0;
@@ -221,101 +220,91 @@ export const leadsCompletedEmailTemplate = ({
           width="100%"
           cellpadding="0"
           cellspacing="0"
-          style="
-            max-width: 520px;
-            background: #FFFFFF;
-            border-radius: 22px;
-            padding: 42px 34px;
-            box-shadow: 0 6px 28px rgba(0,0,0,0.08);
-          "
+         style="
+  max-width: 560px;
+  background: #FFFFFF;
+  border-radius: 22px;
+  padding: 32px 22px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.08);
+"
         >
+<tr>
+  <td align="center">
 
-          <!-- SUCCESS ICON -->
-          <tr>
-            <td align="center">
+    <div
+      style="
+        display:inline-block;
+        padding:8px 14px;
+        background:#ECFDF5;
+        color:#059669;
+        border-radius:999px;
+        font-size:13px;
+        font-weight:600;
+        letter-spacing:.5px;
+      "
+    >
+      LEADS READY
+    </div>
 
-              <div
-                style="
-                  width: 72px;
-                  height: 72px;
-                  border-radius: 999px;
-                  background: #EEF2FF;
-                  text-align: center;
-                  line-height: 72px;
-                  font-size: 34px;
-                  margin: 0 auto;
-                "
-              >
-                <span
-                  style="
-                    position: relative;
-                    top: 2px;
-                  "
-                >
-                  🚀
-                </span>
-              </div>
-
-            </td>
-          </tr>
-
+  </td>
+</tr>
           <!-- BRAND -->
-          <tr>
-            <td
-              align="center"
-              style="
-                font-size: 36px;
-                font-weight: bold;
-                color: #4F46E5;
-                padding-top: 22px;
-                letter-spacing: -1px;
-              "
-            >
-              Korexbase
-            </td>
-          </tr>
+      <tr>
+  <td
+    align="center"
+    style="
+      font-size: 28px;
+      font-weight: bold;
+      color: #4F46E5;
+      padding-top: 18px;
+      letter-spacing: -1px;
+    "
+  >
+    Korexbase
+  </td>
+</tr>
 
           <!-- HEADING -->
-          <tr>
-            <td
-              align="center"
-              style="
-                font-size: 32px;
-                font-weight: bold;
-                color: #0F172A;
-                padding-top: 18px;
-                line-height: 42px;
-              "
-            >
-              Your Leads Are Ready
-            </td>
-          </tr>
+         <tr>
+  <td
+    align="center"
+    style="
+      font-size: 26px;
+      font-weight: bold;
+      color: #0F172A;
+      padding-top: 14px;
+      line-height: 34px;
+    "
+  >
+    Your Leads Are Ready
+  </td>
+</tr>
 
           <!-- SUCCESS TEXT -->
-          <tr>
-            <td
-              align="center"
-              style="
-                color: #10B981;
-                font-size: 14px;
-                font-weight: bold;
-                padding-top: 12px;
-              "
-            >
-              ✅ Job completed successfully
-            </td>
-          </tr>
+         <tr>
+  <td
+    align="center"
+    style="
+      color:#64748B;
+      font-size:14px;
+      font-weight:500;
+      padding-top:12px;
+    "
+  >
+    Lead generation completed successfully
+  </td>
+</tr>
 
           <!-- DESCRIPTION -->
           <tr>
             <td
               align="center"
               style="
-                color: #64748B;
-                font-size: 16px;
-                line-height: 30px;
-                padding-top: 28px;
-              "
+  color: #64748B;
+  font-size: 16px;
+  line-height: 26px;
+  padding-top: 24px;
+"
             >
 
               Hi ${userName || "User"},
@@ -331,17 +320,18 @@ export const leadsCompletedEmailTemplate = ({
 
           <!-- STATS CARD -->
           <tr>
-            <td style="padding-top: 40px;">
+            <td style="padding-top: 28px;">
 
               <table
                 width="100%"
                 cellpadding="0"
                 cellspacing="0"
-                style="
-                  background: #F8FAFC;
-                  border-radius: 20px;
-                  padding: 34px;
-                "
+              style="
+  background: #F8FAFC;
+border:1px solid #E2E8F0;
+border-radius:20px;
+padding:20px;
+"
               >
 
                 <!-- BIG LEADS NUMBER -->
@@ -355,11 +345,11 @@ export const leadsCompletedEmailTemplate = ({
 
                     <div
                       style="
-                        font-size: 58px;
-                        font-weight: bold;
-                        color: #4F46E5;
-                        line-height: 1;
-                      "
+  font-size: 46px;
+  font-weight: bold;
+  color: #4F46E5;
+  line-height: 1;
+"
                     >
                       ${totalLeads}
                     </div>
@@ -496,8 +486,7 @@ export const leadsCompletedEmailTemplate = ({
 
           <!-- DIVIDER -->
           <tr>
-            <td style="padding: 32px 0 22px 0;">
-
+<td style="padding: 24px 0 16px 0;">
               <div
                 style="
                   height: 1px;
@@ -535,7 +524,6 @@ export const leadsCompletedEmailTemplate = ({
       </td>
     </tr>
   </table>
-
 </body>
 </html>
 `;

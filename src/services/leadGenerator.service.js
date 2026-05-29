@@ -1,6 +1,7 @@
 import { runGoogleMapsScraper } from "./googleMapsScraper.service.js";
 import { buildSearchQueries } from "../utils/buildSearchQuery.js";
 import { parseJsonItems } from "../utils/jsonItemsParser.js";
+import { enrichLeadsWithEmails } from "../utils/processToEnrichEmail.js";
 
 export const fetchBusinessLeads = async ({
   businessNiche,
@@ -8,7 +9,7 @@ export const fetchBusinessLeads = async ({
   keywords,
   leadLimit,
   concurrency,
-  extractEmails
+  extractEmails,
 }) => {
   try {
     const searchQuery = buildSearchQueries({
@@ -17,14 +18,21 @@ export const fetchBusinessLeads = async ({
       keywords,
     });
 
-    console.log(searchQuery);
-
+    // Lead Scraping Step
     const leads = await runGoogleMapsScraper({
       queries: searchQuery,
       depth: leadLimit,
-      concurrency: concurrency,
-      extractEmails: extractEmails,
+      concurrency,
+      extractEmails,
     });
+    // No leads found
+    if (!Array.isArray(leads) || leads.length === 0) {
+      return [];
+    }
+    // Email Enrichment Step
+    if (extractEmails) {
+      return await enrichLeadsWithEmails(leads);
+    }
     return leads;
   } catch (e) {
     throw new Error(e.message || "Failed to generate leads");

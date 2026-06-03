@@ -16,8 +16,20 @@ export const runGoogleMapsScraper = async ({
     let killFallbackTimeout = null;
 
     const jobId = crypto.randomUUID();
-    const tempDir = path.resolve(process.cwd(), "temp", jobId);
-    const outputDir = path.resolve(process.cwd(), "gmaps-output", jobId);
+    const tempDir = path.join("/shared-temp", "temp", jobId);
+    const outputDir = path.join("/shared-temp", "output", jobId);
+    const hostQueryFilePath = path.join(
+      process.env.HOST_SHARED_TEMP,
+      "temp",
+      jobId,
+      "queries.txt",
+    );
+
+    const hostOutputDir = path.join(
+      process.env.HOST_SHARED_TEMP,
+      "output",
+      jobId,
+    );
     const queryFilePath = path.resolve(tempDir, "queries.txt");
     const resultFilePath = path.resolve(outputDir, "results.json");
 
@@ -57,30 +69,48 @@ export const runGoogleMapsScraper = async ({
         "--rm",
         "--init",
         // Log overhead chota karo taaki VM processes heavily memory block na karein
-        "--log-opt", "max-size=1m",
-        "-e", `HOME=/tmp/${jobId}`,
-        "-v", "gmaps-playwright-cache:/opt",
-        "-v", `${queryFilePath}:/queries.txt:ro`,
-        "-v", `${outputDir}:/out`,
+        "--log-opt",
+        "max-size=1m",
+        "-e",
+        `HOME=/tmp/${jobId}`,
+        "-v",
+        "gmaps-playwright-cache:/opt",
+        "-v",
+        `${hostQueryFilePath}:/queries.txt:ro`,
+
+        "-v",
+        `${hostOutputDir}:/out`,
         "gosom/google-maps-scraper",
-        "-input", "/queries.txt",
+        "-input",
+        "/queries.txt",
         "-json",
-        "-results", "/out/results.json",
-        "-depth", String(depth),
-        "-c", String(concurrency),
-        "-exit-on-inactivity", "3m", // Official engine baseline requirement
+        "-results",
+        "/out/results.json",
+        "-depth",
+        String(depth),
+        "-c",
+        String(concurrency),
+        "-exit-on-inactivity",
+        "3m", // Official engine baseline requirement
       ];
 
-      if (extractEmails) {
-        dockerArgs.push("-email");
-      }
+      // if (extractEmails) {
+      //   dockerArgs.push("-email");
+      // }
 
       dockerProcess = spawn("docker", dockerArgs, {
-        stdio: "ignore",
+        stdio: ["ignore", "pipe", "pipe"],
+      });
+
+      dockerProcess.stdout.on("data", (data) => {
+        logger.error("[DOCKER STDOUT]" + data.toString());
+      });
+
+      dockerProcess.stderr.on("data", (data) => {
+        logger.error("[DOCKER STDERR]" + data.toString());
       });
 
       logger.info(`[SCRAPER SPAWNED]: Job ${jobId}`);
-
 
       // SAFETY NET: Safe side backup fallback timeout
       killFallbackTimeout = setTimeout(

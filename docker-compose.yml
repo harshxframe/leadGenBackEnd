@@ -1,0 +1,161 @@
+services:
+  app:
+    image: leadgen-backend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: leadgen-backend
+
+    restart: unless-stopped
+
+    ports:
+      - "2020:2020"
+
+    env_file:
+      - .env
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    environment:
+      NODE_ENV: production
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      HOST_SHARED_TEMP: /Users/harsh/projects/aileadGenerator/shared-temp
+
+    volumes:
+      - ./logs:/app/logs
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  worker1:
+    image: leadgen-backend:latest
+    command: node src/jobs/worker/leadsJobWorker.js
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    environment:
+      NODE_ENV: production
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+    volumes:
+     - ./shared-temp:/shared-temp
+     - /var/run/docker.sock:/var/run/docker.sock
+
+  worker2:
+    image: leadgen-backend:latest
+    command: node src/jobs/worker/leadsJobWorker.js
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    environment:
+      NODE_ENV: production
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+    volumes:
+      - ./shared-temp:/shared-temp
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  worker3:
+    image: leadgen-backend:latest
+    command: node src/jobs/worker/leadsJobWorker.js
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    environment:
+      NODE_ENV: production
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+    volumes:
+     - ./shared-temp:/shared-temp
+     - /var/run/docker.sock:/var/run/docker.sock
+
+  worker4:
+    image: leadgen-backend:latest
+    command: node src/jobs/worker/leadsJobWorker.js
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    environment:
+      NODE_ENV: production
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+    volumes:
+     - ./shared-temp:/shared-temp
+     - /var/run/docker.sock:/var/run/docker.sock
+
+  worker5:
+    image: leadgen-backend:latest
+    command: node src/jobs/worker/leadsJobWorker.js
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    environment:
+      NODE_ENV: production
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+    volumes:
+     - ./shared-temp:/shared-temp
+     - /var/run/docker.sock:/var/run/docker.sock
+
+  redis:
+    image: redis:7-alpine
+
+    container_name: leadgen-redis
+
+    restart: unless-stopped
+
+    command: redis-server --appendonly yes
+
+    volumes:
+      - redis_data:/data
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  redis_data:

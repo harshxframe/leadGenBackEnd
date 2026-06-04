@@ -13,6 +13,7 @@ import {
   checkNewRequest,
 } from "./middlewares/accessValidator.js";
 import { connectRedis } from "./config/redisConfig.js";
+import cors from "cors";
 dotenv.config();
 
 const initApp = async () => {
@@ -20,6 +21,7 @@ const initApp = async () => {
     await connectDB();
     await connectRedis();
     const app = express();
+    app.use(cors());
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use("/admin", adminRouter);

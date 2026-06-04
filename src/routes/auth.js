@@ -7,6 +7,8 @@ import {
   getUser,
   updateUser,
   toggleBlockUser,
+  getDashBoardUser,
+  updateDevConfig,
 } from "../controllers/auth.js";
 import {
   checkEmailNotificationsEnabled,
@@ -19,7 +21,9 @@ const authRouter = express.Router();
 authRouter.post("/createAccount", checkNewSignUp, createAccount);
 authRouter.post("/login", checkNewLogin, loginAccount);
 authRouter.post("/getUser", getUser);
+authRouter.post("/getDashboardUser", getDashBoardUser);
 authRouter.post("/updateUser", updateUser);
+authRouter.post("/devConfig", updateDevConfig);
 authRouter.post("/blockUser", toggleBlockUser);
 authRouter.post(
   "/sendVerificationCode",

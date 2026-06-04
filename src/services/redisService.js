@@ -10,7 +10,7 @@ export const createOTPSession = async (email, code) => {
 
     // Redis handles the "exist" check and the write atomically in 1 step
     const result = await client.set(key, value, {
-      EX: 120,
+      EX: 300,
       NX: true,
     });
 

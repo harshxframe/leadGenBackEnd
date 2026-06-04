@@ -28,6 +28,12 @@ const userSchema = new mongoose.Schema(
       trim: true,
     },
 
+    webHookUrl: {
+      type: String,
+      default: null,
+      trim: true,
+    },
+
     credits: {
       type: Number,
       default: 5,

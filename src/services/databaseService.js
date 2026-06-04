@@ -518,24 +518,72 @@ export const releaseCreditService = async (userId, credits) => {
     }
 
     const updatedUser = await User.findOneAndUpdate(
-      { 
-        _id: userId, 
-        lockedCredits: { $gte: credits } 
+      {
+        _id: userId,
+        lockedCredits: { $gte: credits },
       },
       {
         $inc: { credits: credits, lockedCredits: -credits },
       },
-      { new: true }
+      { new: true },
     );
 
     if (!updatedUser) {
-      return serviceResponse(false, "User not found or insufficient locked credits", {});
+      return serviceResponse(
+        false,
+        "User not found or insufficient locked credits",
+        {},
+      );
     }
 
     return serviceResponse(true, "Credit updated successfully", {});
   } catch (e) {
     // 4. Secure logging (avoids leaking raw DB errors to the client)
-    console.error("Database Error in releaseCreditService:", e);
+    return serviceResponse(false, "Database operation failed", {});
+  }
+};
+
+export const getDashBoardUserService = async (id) => {
+  try {
+    // Get User All details;
+    const getUser = await User.findById(id);
+    if (!getUser) {
+      return serviceResponse(false, "User not found", {});
+    }
+
+    const userObj = getUser.toObject();
+    delete userObj["_id"];
+    delete userObj["createdAt"];
+    delete userObj["updatedAt"];
+    delete userObj["__v"];
+
+    // Get Leads
+    const totalLeads = await Leads.countDocuments();
+    const countJobs = await LeadJobs.countDocuments();
+
+    userObj["totalLeads"] = totalLeads || 0;
+    userObj["totalJobs"] = countJobs || 0;
+
+    return serviceResponse(true, "Dashboard user get successfully", {
+      userObj,
+    });
+  } catch (e) {
+    return serviceResponse(false, "Database operation failed", {});
+  }
+};
+
+export const updateDevConfigService = async (id, payload) => {
+  try {
+    const updateDevConfig = await User.findByIdAndUpdate(
+      id,
+      { $set: payload },
+      { new: true },
+    );
+    if (!updateDevConfig) {
+      return serviceResponse(false, "User not found", {});
+    }
+    return serviceResponse(true, "Dev config update successful", {});
+  } catch (e) {
     return serviceResponse(false, "Database operation failed", {});
   }
 };

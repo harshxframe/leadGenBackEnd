@@ -16,9 +16,11 @@ import {
   incrementSearchesService,
   loginAccountService,
   toggleBlockUserService,
+  updateDevConfigService,
   updateUserService,
 } from "../services/databaseService.js";
 import { generateToken, readToken } from "../utils/jwt.js";
+import { getDashBoardUserService } from "../services/databaseService.js";
 
 export const createAccount = async (req, res) => {
   try {
@@ -378,6 +380,101 @@ export const optVerification = async (req, res) => {
     return res
       .status(400)
       .send(responseBody(true, false, 400, "Request does not exsit", {}));
+  } catch (e) {
+    return res
+      .status(500)
+      .send(responseBody(true, false, 500, e.message || "Server Error", {}));
+  }
+};
+
+export const getDashBoardUser = async (req, res) => {
+  try {
+    const { token } = req.body || {};
+    if (!token) {
+      return res
+        .status(400)
+        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
+    }
+
+    // Get token
+    const getId = readToken(token);
+    if (!getId) {
+      return res
+        .status(403)
+        .send(responseBody(true, false, 403, "Invalid token", {}));
+    }
+    const isSuccess = await getDashBoardUserService(getId.id); // Get here all for dashboard
+    if (isSuccess.success) {
+      const userdata = isSuccess.data || {};
+      return res
+        .status(200)
+        .send(responseBody(false, true, 200, isSuccess.message, { userdata }));
+    }
+    return res
+      .status(400)
+      .send(
+        responseBody(
+          true,
+          false,
+          400,
+          isSuccess.message || "Failed to get user",
+          {},
+        ),
+      );
+  } catch (e) {
+    return res
+      .status(500)
+      .send(responseBody(true, false, 500, e.message || "Server Error", {}));
+  }
+};
+
+export const updateDevConfig = async (req, res) => {
+  try {
+    const { isApiUpdate, webhookUrl, token } = req.body || {};
+    if (!token) {
+      return res
+        .status(400)
+        .send(responseBody(true, false, 400, "Auth failed", {}));
+    }
+    if (!isApiUpdate && !webhookUrl) {
+      return res
+        .status(400)
+        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
+    }
+
+    const finalPayload = {};
+    if (isApiUpdate) {
+      finalPayload["apiKey"] = generateApiKey();
+    }
+    if (webhookUrl) {
+      finalPayload["webHookUrl"] = webhookUrl;
+    }
+
+    const getId = readToken(token);
+    if (!getId) {
+      return res
+        .status(403)
+        .send(responseBody(true, false, 403, "Invalid token", {}));
+    }
+
+    const isSuccess = await updateDevConfigService(getId.id, finalPayload);
+
+    if (isSuccess.success) {
+      return res
+        .status(200)
+        .send(responseBody(false, true, 200, isSuccess.message, {}));
+    }
+    return res
+      .status(400)
+      .send(
+        responseBody(
+          true,
+          false,
+          400,
+          isSuccess.message || "Failed to update dev config",
+          {},
+        ),
+      );
   } catch (e) {
     return res
       .status(500)

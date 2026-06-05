@@ -14,6 +14,7 @@ import {
 } from "./middlewares/accessValidator.js";
 import { connectRedis } from "./config/redisConfig.js";
 import cors from "cors";
+import dashbaordRouter from "./routes/dashboard.js";
 dotenv.config();
 
 const initApp = async () => {
@@ -28,6 +29,7 @@ const initApp = async () => {
     app.use(checkNewRequest);
     app.use(checkMaintenance);
     app.use("/app/v1/auth", authRouter);
+    app.use("/app/v1/dashboard", dashbaordRouter);
     app.use("/app/v1", generateLeadsRouter);
     app.get("/health", systemHealthMiddleware);
     app.use(invalidRoute);

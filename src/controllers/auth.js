@@ -112,8 +112,8 @@ export const getUser = async (req, res) => {
     const { token } = req.body || {};
     if (!token) {
       return res
-        .status(400)
-        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
+        .status(401)
+        .send(responseBody(true, false, 401, "Payload not satisfied", {}));
     }
 
     // Get token
@@ -165,8 +165,8 @@ export const updateUser = async (req, res) => {
     }
     if (!token) {
       return res
-        .status(400)
-        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
+        .status(401)
+        .send(responseBody(true, false, 401, "Payload not satisfied", {}));
     }
     // Get token
     const getId = readToken(token);
@@ -392,8 +392,8 @@ export const getDashBoardUser = async (req, res) => {
     const { token } = req.body || {};
     if (!token) {
       return res
-        .status(400)
-        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
+        .status(401)
+        .send(responseBody(true, false, 401, "Payload not satisfied", {}));
     }
 
     // Get token
@@ -433,8 +433,8 @@ export const updateDevConfig = async (req, res) => {
     const { isApiUpdate, webhookUrl, token } = req.body || {};
     if (!token) {
       return res
-        .status(400)
-        .send(responseBody(true, false, 400, "Auth failed", {}));
+        .status(401)
+        .send(responseBody(true, false, 401, "Auth failed", {}));
     }
     if (!isApiUpdate && !webhookUrl) {
       return res

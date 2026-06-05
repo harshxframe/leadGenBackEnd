@@ -587,3 +587,81 @@ export const updateDevConfigService = async (id, payload) => {
     return serviceResponse(false, "Database operation failed", {});
   }
 };
+
+export const getJobsInPaginationService = async (id, page, limit, skip) => {
+  try {
+    // 2. Fetch data and total count simultaneously for performance
+    const [jobs, totalJobs] = await Promise.all([
+      LeadJobs.find({ userId: id })
+        .skip(skip)
+        .limit(limit)
+        .sort({ createdAt: -1 }), // Optional: shows newest jobs first
+      LeadJobs.countDocuments({ userId: id }),
+    ]);
+
+    // 3. Calculate total pages
+    const totalPages = Math.ceil(totalJobs / limit);
+
+    return serviceResponse(true, "Jobs get successful", {
+      data: jobs,
+      pagination: {
+        currentPage: page,
+        limit: limit,
+        totalJobs,
+        totalPages,
+      },
+    });
+  } catch (e) {
+    return serviceResponse(false, "Database operation failed", {});
+  }
+};
+
+export const getRunningJobsService = async (userId) => {
+  try {
+    const filter = {
+      userId: userId,
+      status: { $in: ["processing", "queued"] },
+    };
+    const getRunningJobs = await LeadJobs.find(filter).sort({ createdAt: -1 });
+
+    return serviceResponse(true, "Jobs get successful", {
+      count: getRunningJobs.length,
+      data: getRunningJobs,
+    });
+  } catch (e) {
+    return serviceResponse(false, "Database operation failed", {});
+  }
+};
+
+export const getJobStatusbyIdService = async (userId, jobId) => {
+  try {
+    const getLeads = await LeadJobs.findOne({jobId:jobId});
+    if (!getLeads) {
+      return serviceResponse(false, "Job no found", {});
+    }
+    return serviceResponse(true, "Get job status successfull", {
+      job: getJobStatus,
+    });
+  } catch (e) {
+    return serviceResponse(false, "Database operation failed", {});
+  }
+};
+
+export const getLeadsByJobIdService = async (userId, jobId) => {
+  try {
+    const getLeadsJob = await LeadJobs.findOne({jobId:jobId});
+    if (!getLeadsJob) {
+      return serviceResponse(false, "Job no found", {});
+    }
+
+    const getLeads = await Leads.find({userId:userId, jobId:getLeadsJob?._id});
+    return serviceResponse(true, "Get leads successfull", {
+      leads: getLeads,
+      totalLeads:getLeads.length,
+      jobData:getLeadsJob
+    });
+  } catch (e) {
+     console.log(e);
+    return serviceResponse(false, "Database operation failed", {});
+  }
+};

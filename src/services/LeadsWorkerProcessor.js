@@ -68,7 +68,7 @@ export async function leadsWorkerProcessor(job) {
         extractEmails: selectedFields?.emails,
         limit: config.limit,
       }),
-      3600 * 1000,
+      18000000,
     );
     if (Array.isArray(generateLeads) && generateLeads.length !== 0) {
       const processLeads = buildFinalLeads({

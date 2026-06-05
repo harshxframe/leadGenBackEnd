@@ -15,6 +15,7 @@ import {
 import { connectRedis } from "./config/redisConfig.js";
 import cors from "cors";
 import dashbaordRouter from "./routes/dashboard.js";
+import morgan from "morgan";
 dotenv.config();
 
 const initApp = async () => {
@@ -25,6 +26,7 @@ const initApp = async () => {
     app.use(cors());
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+    aap.use(morgan('combined'));
     app.use("/admin", adminRouter);
     app.use(checkNewRequest);
     app.use(checkMaintenance);

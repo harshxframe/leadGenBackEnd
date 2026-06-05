@@ -48,8 +48,8 @@ services:
       REDIS_PORT: 6379
 
     volumes:
-     - ./shared-temp:/shared-temp
-     - /var/run/docker.sock:/var/run/docker.sock
+      - ./shared-temp:/shared-temp
+      - /var/run/docker.sock:/var/run/docker.sock
 
   worker2:
     image: leadgen-backend:latest
@@ -73,72 +73,6 @@ services:
       - ./shared-temp:/shared-temp
       - /var/run/docker.sock:/var/run/docker.sock
 
-  worker3:
-    image: leadgen-backend:latest
-    command: node src/jobs/worker/leadsJobWorker.js
-
-    restart: unless-stopped
-
-    env_file:
-      - .env
-
-    depends_on:
-      redis:
-        condition: service_healthy
-
-    environment:
-      NODE_ENV: production
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-
-    volumes:
-     - ./shared-temp:/shared-temp
-     - /var/run/docker.sock:/var/run/docker.sock
-
-  worker4:
-    image: leadgen-backend:latest
-    command: node src/jobs/worker/leadsJobWorker.js
-
-    restart: unless-stopped
-
-    env_file:
-      - .env
-
-    depends_on:
-      redis:
-        condition: service_healthy
-
-    environment:
-      NODE_ENV: production
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-
-    volumes:
-     - ./shared-temp:/shared-temp
-     - /var/run/docker.sock:/var/run/docker.sock
-
-  worker5:
-    image: leadgen-backend:latest
-    command: node src/jobs/worker/leadsJobWorker.js
-
-    restart: unless-stopped
-
-    env_file:
-      - .env
-
-    depends_on:
-      redis:
-        condition: service_healthy
-
-    environment:
-      NODE_ENV: production
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-
-    volumes:
-     - ./shared-temp:/shared-temp
-     - /var/run/docker.sock:/var/run/docker.sock
-
   redis:
     image: redis:7-alpine
 
@@ -152,7 +86,7 @@ services:
       - redis_data:/data
 
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: [ "CMD", "redis-cli", "ping" ]
       interval: 10s
       timeout: 5s
       retries: 5

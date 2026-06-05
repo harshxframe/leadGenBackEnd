@@ -143,7 +143,6 @@ export const placeJobRequest = async (req, res) => {
       config: scrapConfig,
       selectedFields: selectedFields,
     };
-    console.log(JSON.stringify(queueDataPayload));
     const leadJob = await leadJobQueue.add("lead-job-queue", queueDataPayload);
     if (leadJob?.id) {
       return res.send(

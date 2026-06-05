@@ -26,7 +26,7 @@ const initApp = async () => {
     app.use(cors());
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-    aap.use(morgan('combined'));
+    app.use(morgan('combined'));
     app.use("/admin", adminRouter);
     app.use(checkNewRequest);
     app.use(checkMaintenance);

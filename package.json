@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@lemonsqueezy/lemonsqueezy.js": "^4.0.0",
     "@ngrok/ngrok": "^1.7.0",
     "axios": "^1.16.1",
     "bullmq": "^5.76.10",

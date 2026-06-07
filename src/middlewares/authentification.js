@@ -12,7 +12,7 @@ export const userAuthentication = async (req, res, next) => {
       // Put the bearer token in the body
       req.body.userId = getId?.id;
     } else {
-      res
+      return res
         .status(401)
         .send(
           responseBody(true, false, 401, "Invalid authentication request", {}),
@@ -21,7 +21,7 @@ export const userAuthentication = async (req, res, next) => {
 
     next();
   } catch (e) {
-    res
+    return res
       .status(401)
       .send(
         responseBody(true, false, 401, "Invalid authentication request", {}),

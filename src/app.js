@@ -16,6 +16,9 @@ import { connectRedis } from "./config/redisConfig.js";
 import cors from "cors";
 import dashbaordRouter from "./routes/dashboard.js";
 import morgan from "morgan";
+import paymentRouter from "./routes/payment.js";
+import "../src/lib/lemon.js";
+import webhookRouter from "./webhooks/index.js";
 dotenv.config();
 
 const initApp = async () => {
@@ -24,15 +27,23 @@ const initApp = async () => {
     await connectRedis();
     const app = express();
     app.use(cors());
-    app.use(express.json());
+    app.use(
+      express.json({
+        verify: (req, res, buf) => {
+          req.rawBody = buf;
+        },
+      }),
+    );
     app.use(express.urlencoded({ extended: true }));
-    app.use(morgan('combined'));
+    app.use(morgan("combined"));
     app.use("/admin", adminRouter);
     app.use(checkNewRequest);
     app.use(checkMaintenance);
     app.use("/app/v1/auth", authRouter);
     app.use("/app/v1/dashboard", dashbaordRouter);
+    app.use("/app/v1/payment", paymentRouter);
     app.use("/app/v1", generateLeadsRouter);
+    app.use("/webhooks", webhookRouter);
     app.get("/health", systemHealthMiddleware);
     app.use(invalidRoute);
     app.use(globalErrorHandler);

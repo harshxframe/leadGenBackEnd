@@ -3,6 +3,7 @@ import LeadJobs from "../models/Jobs.js";
 import User from "../models/user.js";
 import { serviceResponse } from "../utils/serviceResponseBody.js";
 import Leads from "../models/Leads.js";
+import {Transaction} from "../models/transaction.js";
 
 export const getPlatformSettingService = async () => {
   try {
@@ -635,7 +636,7 @@ export const getRunningJobsService = async (userId) => {
 
 export const getJobStatusbyIdService = async (userId, jobId) => {
   try {
-    const getLeads = await LeadJobs.findOne({jobId:jobId});
+    const getLeads = await LeadJobs.findOne({ jobId: jobId });
     if (!getLeads) {
       return serviceResponse(false, "Job no found", {});
     }
@@ -649,19 +650,55 @@ export const getJobStatusbyIdService = async (userId, jobId) => {
 
 export const getLeadsByJobIdService = async (userId, jobId) => {
   try {
-    const getLeadsJob = await LeadJobs.findOne({jobId:jobId});
+    const getLeadsJob = await LeadJobs.findOne({ jobId: jobId });
     if (!getLeadsJob) {
       return serviceResponse(false, "Job no found", {});
     }
 
-    const getLeads = await Leads.find({userId:userId, jobId:getLeadsJob?._id});
+    const getLeads = await Leads.find({
+      userId: userId,
+      jobId: getLeadsJob?._id,
+    });
     return serviceResponse(true, "Get leads successfull", {
       leads: getLeads,
-      totalLeads:getLeads.length,
-      jobData:getLeadsJob
+      totalLeads: getLeads.length,
+      jobData: getLeadsJob,
     });
   } catch (e) {
-     console.log(e);
+    console.log(e);
+    return serviceResponse(false, "Database operation failed", {});
+  }
+};
+
+export const paymentHistoryService = async (
+  userId,
+  page,
+  limit,
+  skip,
+) => {
+try {
+    // 2. Fetch data and total count simultaneously for performance
+    const [history, totalHistory] = await Promise.all([
+      Transaction.find({ userId: userId })
+        .skip(skip)
+        .limit(limit)
+        .sort({ createdAt: -1 }), // Optional: shows newest jobs first
+      Transaction.countDocuments({ userId: userId }),
+    ]);
+
+    // 3. Calculate total pages
+    const totalPages = Math.ceil(totalHistory / limit);
+
+    return serviceResponse(true, "Jobs get successful", {
+      data: history,
+      pagination: {
+        currentPage: page,
+        limit: limit,
+        totalHistory,
+        totalPages,
+      },
+    });
+  } catch (e) {
     return serviceResponse(false, "Database operation failed", {});
   }
 };

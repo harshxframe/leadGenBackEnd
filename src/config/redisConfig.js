@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import logger from "../utils/logger.js";
 
 const host = process.env.ENVIRONTMENT==="development"? "localhost":process.env.REDIS_HOST;
-console.log("fjfj"+host);
 const port = process.env.REDIS_PORT || 6379;
 
 const otpKey = (email) =>{

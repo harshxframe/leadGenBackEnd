@@ -14,10 +14,10 @@ export const runGoogleMapsScraper = async ({
     let settled = false;
     let dockerProcess = null;
     let killFallbackTimeout = null;
-
     const jobId = crypto.randomUUID();
     const tempDir = path.join("/shared-temp", "temp", jobId);
     const outputDir = path.join("/shared-temp", "output", jobId);
+    const containerName = `gmaps-${jobId}`;
     const hostQueryFilePath = path.join(
       process.env.HOST_SHARED_TEMP,
       "temp",
@@ -52,7 +52,61 @@ export const runGoogleMapsScraper = async ({
         await fs.rm(outputDir, { recursive: true, force: true });
       } catch {}
     };
+    const finishJob = async () => {
+      if (settled) return;
 
+      try {
+        if (killFallbackTimeout) {
+          clearTimeout(killFallbackTimeout);
+        }
+
+        await new Promise((r) => setTimeout(r, 2000));
+
+        await fs.access(resultFilePath);
+
+        const rawData = await fs.readFile(resultFilePath, "utf-8");
+
+        let parsedData = [];
+
+        try {
+          parsedData = JSON.parse(rawData);
+
+          if (!Array.isArray(parsedData)) {
+            parsedData = [parsedData];
+          }
+        } catch {
+          parsedData = rawData
+            .split("\n")
+            .filter((line) => line.trim() !== "")
+            .map((line) => {
+              try {
+                return JSON.parse(line);
+              } catch {
+                return null;
+              }
+            })
+            .filter(Boolean);
+        }
+
+        settled = true;
+
+        resolve(parsedData);
+
+        await cleanup();
+      } catch (e) {
+        if (settled) return;
+
+        settled = true;
+
+        logger.error("SCRAPER PROCESSING EXCEPTION", {
+          error: e.message,
+        });
+
+        await cleanup();
+
+        reject(e);
+      }
+    };
     try {
       if (!Array.isArray(queries) || queries.length === 0) {
         throw new Error("Queries required");
@@ -66,6 +120,8 @@ export const runGoogleMapsScraper = async ({
 
       const dockerArgs = [
         "run",
+        "--name",
+        containerName,
         "--rm",
         "--init",
         // Log overhead chota karo taaki VM processes heavily memory block na karein
@@ -106,8 +162,22 @@ export const runGoogleMapsScraper = async ({
         logger.error("[DOCKER STDOUT]" + data.toString());
       });
 
-      dockerProcess.stderr.on("data", (data) => {
-        logger.error("[DOCKER STDERR]" + data.toString());
+      dockerProcess.stderr.on("data", async (data) => {
+        const log = data.toString();
+
+        logger.error("[DOCKER STDERR]" + log);
+
+        if (!settled && log.includes("scrapemate exited")) {
+          logger.info(`[SCRAPER EXIT DETECTED]: Job ${jobId}`);
+
+          try {
+            await finishJob();
+          } finally {
+            try {
+              spawn("docker", ["rm", "-f", containerName]);
+            } catch {}
+          }
+        }
       });
 
       logger.info(`[SCRAPER SPAWNED]: Job ${jobId}`);
@@ -139,49 +209,17 @@ export const runGoogleMapsScraper = async ({
       dockerProcess.on("exit", async (code) => {
         if (settled) return;
 
-        try {
-          console.log(`[SCRAPER CLOSED INSTANTLY]: Exit code ${code}`);
+        logger.info(`[DOCKER EXIT EVENT]: Job ${jobId}, code=${code}`);
 
-          if (code !== 0 && code !== null) {
-            throw new Error(`Docker exited with code ${code}`);
-          }
-
-          await new Promise((r) => setTimeout(r, 400));
-
-          await fs.access(resultFilePath);
-          const rawData = await fs.readFile(resultFilePath, "utf-8");
-
-          let parsedData = [];
-
-          try {
-            parsedData = JSON.parse(rawData);
-            if (!Array.isArray(parsedData)) {
-              parsedData = [parsedData];
-            }
-          } catch {
-            parsedData = rawData
-              .split("\n")
-              .filter((line) => line.trim() !== "")
-              .map((line) => {
-                try {
-                  return JSON.parse(line);
-                } catch {
-                  return null;
-                }
-              })
-              .filter(Boolean);
-          }
-
+        if (code !== 0 && code !== null) {
           settled = true;
-          resolve(parsedData);
+
           await cleanup();
-        } catch (e) {
-          if (settled) return;
-          settled = true;
-          logger.error("SCRAPER PROCESSING EXCEPTION", { error: e.message });
-          await cleanup();
-          reject(e);
+
+          return reject(new Error(`Docker exited with code ${code}`));
         }
+
+        await finishJob();
       });
     } catch (e) {
       if (settled) return;

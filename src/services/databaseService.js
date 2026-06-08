@@ -3,7 +3,7 @@ import LeadJobs from "../models/Jobs.js";
 import User from "../models/user.js";
 import { serviceResponse } from "../utils/serviceResponseBody.js";
 import Leads from "../models/Leads.js";
-import {Transaction} from "../models/transaction.js";
+import { Transaction } from "../models/transaction.js";
 
 export const getPlatformSettingService = async () => {
   try {
@@ -125,10 +125,24 @@ export const incrementSearchesService = async (id) => {
 
 export const createLeadJobService = async (payload) => {
   try {
+    const activeJobsCount = await LeadJobs.countDocuments({
+      userId: payload.userId,
+      status: { $in: ["queued", "processing"] },
+    });
+
+    if (activeJobsCount >= 3) {
+      return serviceResponse(
+        false,
+        "You cannot have more than 3 active (queued/processing) jobs at a time.",
+        {},
+      );
+    }
+
     const isJobCreated = await LeadJobs.create(payload);
     if (!isJobCreated) {
       return serviceResponse(false, "Failed to create job", {});
     }
+
     return serviceResponse(true, "Job Created successfully", {
       job: isJobCreated,
     });
@@ -670,13 +684,8 @@ export const getLeadsByJobIdService = async (userId, jobId) => {
   }
 };
 
-export const paymentHistoryService = async (
-  userId,
-  page,
-  limit,
-  skip,
-) => {
-try {
+export const paymentHistoryService = async (userId, page, limit, skip) => {
+  try {
     // 2. Fetch data and total count simultaneously for performance
     const [history, totalHistory] = await Promise.all([
       Transaction.find({ userId: userId })

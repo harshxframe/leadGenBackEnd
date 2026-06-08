@@ -711,3 +711,15 @@ export const paymentHistoryService = async (userId, page, limit, skip) => {
     return serviceResponse(false, "Database operation failed", {});
   }
 };
+
+export const getAPIUserService = async (apiKey) =>{
+ try {
+    const getAPIUser = await User.findOne({apiKey:apiKey});
+    if (!getAPIUser) {
+      return serviceResponse(false, "User does not exsit", {});
+    }
+    return serviceResponse(true, "User exsit", { user: getAPIUser });
+  } catch (e) {
+    return serviceResponse(false, e.message || "DB Error", {});
+  }
+}

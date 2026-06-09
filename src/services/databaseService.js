@@ -573,8 +573,8 @@ export const getDashBoardUserService = async (id) => {
     delete userObj["__v"];
 
     // Get Leads
-    const totalLeads = await Leads.countDocuments();
-    const countJobs = await LeadJobs.countDocuments();
+    const totalLeads = await Leads.countDocuments({userId:id});
+    const countJobs = await LeadJobs.countDocuments({userId:id});
 
     userObj["totalLeads"] = totalLeads || 0;
     userObj["totalJobs"] = countJobs || 0;
@@ -655,9 +655,10 @@ export const getJobStatusbyIdService = async (userId, jobId) => {
       return serviceResponse(false, "Job no found", {});
     }
     return serviceResponse(true, "Get job status successfull", {
-      job: getJobStatus,
+      job: getLeads,
     });
   } catch (e) {
+    console.log(e);
     return serviceResponse(false, "Database operation failed", {});
   }
 };

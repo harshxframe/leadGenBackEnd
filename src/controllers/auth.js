@@ -21,6 +21,8 @@ import {
 } from "../services/databaseService.js";
 import { generateToken, readToken } from "../utils/jwt.js";
 import { getDashBoardUserService } from "../services/databaseService.js";
+import logger from "../utils/logger.js";
+import sendMailJetEmail from "../services/mailJetEmailService.js";
 
 export const createAccount = async (req, res) => {
   try {
@@ -330,7 +332,22 @@ export const sendVarificationCode = async (req, res) => {
       emailTamplate,
     );
 
-    if (isEmailSend.success) {
+    let finalEmailResult = isEmailSend;
+
+    if (!isEmailSend?.success) {
+      logger.error("ZeptoMail failed. Trying Mailjet...");
+
+      finalEmailResult = await sendMailJetEmail(
+        adminEmail,
+        adminName,
+        email,
+        `Verify your Korexbase account ${oneTimePassowrd}`,
+        "User",
+        emailTamplate,
+      );
+    }
+
+    if (finalEmailResult.success) {
       const saveTempOtp = await createOTPSession(email, oneTimePassowrd);
       if (saveTempOtp) {
         return res
@@ -348,7 +365,7 @@ export const sendVarificationCode = async (req, res) => {
             true,
             false,
             500,
-            isEmailSend.message || "Failed to send email",
+            finalEmailResult.message || "Failed to send email",
             {},
           ),
         );

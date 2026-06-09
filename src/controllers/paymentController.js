@@ -33,6 +33,9 @@ export const createLemonSqeezeCheckOut = async (req, res) => {
         productOptions: {
           enabledVariants: [Number(variantId)],
         },
+        checkoutOptions: {
+          embed: true,
+        },
         checkoutData: {
           email: email,
           name: name,

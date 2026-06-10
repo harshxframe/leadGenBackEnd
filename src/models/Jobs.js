@@ -176,6 +176,8 @@ const jobSchema = new mongoose.Schema(
   },
 );
 
+jobSchema.index({ createdAt: 1 }, { expireAfterSeconds: 60 * 60 * 24 * 30 });
+
 const LeadJobs = mongoose.model("LeadJobs", jobSchema);
 
 export default LeadJobs;

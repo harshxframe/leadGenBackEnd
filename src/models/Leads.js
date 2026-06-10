@@ -351,6 +351,8 @@ leadSchema.index({
   createdAt: -1,
 });
 
+leadSchema.index({ createdAt: 1 }, { expireAfterSeconds: 60 * 60 * 24 * 30 });
+
 const Leads = mongoose.model("Leads", leadSchema);
 
 export default Leads;

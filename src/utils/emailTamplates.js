@@ -528,3 +528,157 @@ padding:20px;
 </html>
 `;
 };
+
+export const contactRequestTemplate = ({
+fullName,
+contactEmail,
+subject,
+message,
+}) => {
+return ` <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>New Contact Request</title>
+</head>
+
+<body style="margin:0;padding:30px;background:#f5f7fa;font-family:Arial,sans-serif;color:#1e293b;">
+
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center">
+
+<table
+  width="600"
+  cellpadding="0"
+  cellspacing="0"
+  style="
+    background:#ffffff;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:32px;
+  "
+>
+
+<tr>
+<td>
+
+<div
+  style="
+    font-size:24px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:6px;
+  "
+>
+Korexbase
+</div>
+
+<div
+  style="
+    font-size:14px;
+    color:#6b7280;
+    margin-bottom:24px;
+  "
+>
+New contact request received from your website.
+</div>
+
+<hr
+  style="
+    border:none;
+    border-top:1px solid #e5e7eb;
+    margin:24px 0;
+  "
+/>
+
+<table width="100%" cellpadding="0" cellspacing="0">
+
+<tr>
+  <td style="padding:10px 0;width:120px;font-weight:600;">
+    Name
+  </td>
+  <td style="padding:10px 0;">
+    ${fullName}
+  </td>
+</tr>
+
+<tr>
+  <td style="padding:10px 0;font-weight:600;">
+    Email
+  </td>
+  <td style="padding:10px 0;">
+    ${contactEmail}
+  </td>
+</tr>
+
+<tr>
+  <td style="padding:10px 0;font-weight:600;">
+    Subject
+  </td>
+  <td style="padding:10px 0;">
+    ${subject}
+  </td>
+</tr>
+
+<tr>
+  <td style="padding:10px 0;font-weight:600;">
+    Received
+  </td>
+  <td style="padding:10px 0;">
+    ${new Date().toLocaleString()}
+  </td>
+</tr>
+
+</table>
+
+<div
+  style="
+    margin-top:30px;
+    margin-bottom:12px;
+    font-size:16px;
+    font-weight:600;
+    color:#111827;
+  "
+>
+Message
+</div>
+
+<div
+  style="
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:8px;
+    padding:18px;
+    line-height:1.7;
+    white-space:pre-wrap;
+    color:#334155;
+  "
+>
+${message}
+</div>
+
+<div
+  style="
+    margin-top:30px;
+    padding-top:16px;
+    border-top:1px solid #e5e7eb;
+    font-size:12px;
+    color:#94a3b8;
+  "
+>
+This notification was generated automatically by Korexbase.
+</div>
+
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>`;
+};

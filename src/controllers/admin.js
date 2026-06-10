@@ -1,7 +1,17 @@
 import { responseBody } from "../utils/responseBody.js";
 import PlatformSettings from "../models/admin.js";
-import { clearPlatformSettingsCache, getAdminSettings } from "../services/redisService.js";
+import {
+  clearPlatformSettingsCache,
+  getAdminSettings,
+} from "../services/redisService.js";
 import User from "../models/user.js";
+import values from "../config/values.js";
+import { contactRequestTemplate } from "../utils/emailTamplates.js";
+import sendEmail from "../services/emailService.js";
+import sendMailJetEmail from "../services/mailJetEmailService.js";
+import logger from "../utils/logger.js";
+
+
 
 export const updateAdminSettings = async (req, res) => {
   try {
@@ -174,12 +184,8 @@ export const getAllUsers = async (req, res) => {
 
     // 2. Fetch data and count total records concurrently for speed
     const [users, totalUsers] = await Promise.all([
-      User.find()
-        .skip(skip)
-        .limit(limit)
-        .sort({ createdAt: -1 }) 
-        .lean(),
-      User.countDocuments()
+      User.find().skip(skip).limit(limit).sort({ createdAt: -1 }).lean(),
+      User.countDocuments(),
     ]);
 
     const sanitizedUsers = users.map((user) => {
@@ -199,10 +205,74 @@ export const getAllUsers = async (req, res) => {
           totalUsers,
           totalPages,
           currentPage: page,
-          limit
-        }
-      })
+          limit,
+        },
+      }),
     );
+  } catch (e) {
+    return res
+      .status(500)
+      .send(responseBody(true, false, 500, e.message || "Server Error", {}));
+  }
+};
+
+export const sendUserInquery = async (req, res) => {
+  try {
+    const { fullName, contactEmail, subject, message } = req.body || {};
+    if (!fullName || !contactEmail || !subject || !message) {
+      return res
+        .status(400)
+        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
+    }
+
+    const adminName = values?.adminName;
+    const adminEmail = values?.adminVarificationEmail;
+    const emailTamplate = contactRequestTemplate({fullName:fullName, contactEmail:contactEmail, subject:subject, message:message});
+    const ownerEMail = values?.ownerEMail;
+    const ownerName = values?.ownerName;
+
+    const isEmailSend = await sendEmail(
+      adminEmail,
+      adminName,
+      ownerEMail,
+      `New Contact Request from ${fullName}`,
+      ownerName,
+      emailTamplate,
+    );
+
+    let finalEmailResult = isEmailSend;
+
+    if (!isEmailSend?.success) {
+      logger.error("ZeptoMail failed. Trying Mailjet...");
+
+      finalEmailResult = await sendMailJetEmail(
+        adminEmail,
+        adminName,
+        ownerEMail,
+        `New Contact Request from ${fullName}`,
+        ownerName,
+        emailTamplate,
+      );
+    }
+
+    if (finalEmailResult.success) {
+        return res
+          .status(200)
+          .send(responseBody(false, true, 200, "Message send successfully", {}));
+    } else {
+      return res
+        .status(500)
+        .send(
+          responseBody(
+            true,
+            false,
+            500,
+            finalEmailResult.message || "Failed to send message",
+            {},
+          ),
+        );
+    }
+
   } catch (e) {
     return res
       .status(500)

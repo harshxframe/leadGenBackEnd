@@ -235,7 +235,7 @@ export const leadsSavingService = async (userId, jobDBId, leads = []) => {
          */
 
         const optimizedReviews = Array.isArray(lead.reviews)
-          ? lead.reviews.slice(-2).map((review) => ({
+          ? lead.reviews.slice(-10).map((review) => ({
               reviewerName: review.Name || null,
 
               reviewerPhoto: review.ProfilePicture || null,

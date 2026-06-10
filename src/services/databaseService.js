@@ -597,7 +597,7 @@ export const updateDevConfigService = async (id, payload) => {
     if (!updateDevConfig) {
       return serviceResponse(false, "User not found", {});
     }
-    return serviceResponse(true, "Dev config update successful", {});
+    return serviceResponse(true, "Dev config update successful", {apiKey:updateDevConfig?.apiKey});
   } catch (e) {
     return serviceResponse(false, "Database operation failed", {});
   }

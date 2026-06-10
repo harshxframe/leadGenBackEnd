@@ -479,7 +479,7 @@ export const updateDevConfig = async (req, res) => {
     if (isSuccess.success) {
       return res
         .status(200)
-        .send(responseBody(false, true, 200, isSuccess.message, {}));
+        .send(responseBody(false, true, 200, isSuccess.message, {data:isSuccess.data}));
     }
     return res
       .status(400)

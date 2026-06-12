@@ -194,7 +194,7 @@ export const placeAPIRequest = async (req, res) => {
             true,
             false,
             401,
-            isAPIValid.message || "API is not valid",
+            "API is not valid",
             {},
           ),
         );
@@ -333,7 +333,7 @@ export const getJobsStatus = async (req, res) => {
             true,
             false,
             401,
-            isAPIValid.message || "API is not valid",
+            "API is not valid",
             {},
           ),
         );

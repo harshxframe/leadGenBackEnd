@@ -607,7 +607,7 @@ export const getJobsInPaginationService = async (id, page, limit, skip) => {
   try {
     // 2. Fetch data and total count simultaneously for performance
     const [jobs, totalJobs] = await Promise.all([
-      LeadJobs.find({ userId: id })
+      LeadJobs.find({ userId: id, requestSource:"dashboard" })
         .skip(skip)
         .limit(limit)
         .sort({ createdAt: -1 }), // Optional: shows newest jobs first

@@ -324,7 +324,20 @@ export const getJobsStatus = async (req, res) => {
         .status(400)
         .send(responseBody(true, false, 400, "Payload not satisfied", {}));
     }
-
+    const isAPIValid = await getAPIUserService(apiKey);
+    if (!isAPIValid.success) {
+      return res
+        .status(401)
+        .send(
+          responseBody(
+            true,
+            false,
+            401,
+            isAPIValid.message || "API is not valid",
+            {},
+          ),
+        );
+    }
     const isSuccess = await getJobsStatusByIdsService(jobIds);
 
     if (isSuccess.success) {

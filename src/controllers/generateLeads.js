@@ -5,6 +5,7 @@ import { generateJobKey } from "../utils/jobIdGenerator.js";
 import {
   createLeadJobService,
   getAPIUserService,
+  getJobsStatusByIdsService,
   getUserService,
   reserveJobCreditService,
 } from "../services/databaseService.js";
@@ -182,7 +183,6 @@ export const placeAPIRequest = async (req, res) => {
         .send(responseBody(true, false, 400, "Payload not satisfied", {}));
     }
 
-
     const uniqueJobId = generateJobKey();
 
     const isAPIValid = await getAPIUserService(apiKey);
@@ -208,7 +208,6 @@ export const placeAPIRequest = async (req, res) => {
         }),
       );
     }
-
 
     const scrapConfig = getScraperConfig(leadLimit);
     keywords = keywords.slice(0, scrapConfig.maxKeyowrds);
@@ -243,8 +242,7 @@ export const placeAPIRequest = async (req, res) => {
         );
     }
 
-
-      const reserveCredits = await reserveJobCreditService(
+    const reserveCredits = await reserveJobCreditService(
       user?._id,
       requestCost,
     );
@@ -262,8 +260,7 @@ export const placeAPIRequest = async (req, res) => {
         );
     }
 
-
-      // Now it's time to create JOB in DB then Push In Queue.
+    // Now it's time to create JOB in DB then Push In Queue.
     const isDBJobCreated = await createLeadJobService(payload);
     if (!isDBJobCreated.success) {
       return res
@@ -278,7 +275,6 @@ export const placeAPIRequest = async (req, res) => {
           ),
         );
     }
-
 
     const dbJobId = isDBJobCreated.data.job?.jobId;
     const dbLevelId = isDBJobCreated.data.job?._id;
@@ -297,7 +293,10 @@ export const placeAPIRequest = async (req, res) => {
       webHookUrl: user?.webHookUrl,
     };
 
-    const leadJob = await apiLeadJobQueue.add("api-lead-job-queue", queueDataPayload);
+    const leadJob = await apiLeadJobQueue.add(
+      "api-lead-job-queue",
+      queueDataPayload,
+    );
     if (leadJob?.id) {
       return res.send(
         responseBody(false, true, 200, "Request placed successfull", {
@@ -308,8 +307,37 @@ export const placeAPIRequest = async (req, res) => {
     return res
       .status(400)
       .send(responseBody(true, false, 400, "Failed to place request", {}));
+  } catch (e) {
+    return res
+      .status(500)
+      .send(responseBody(true, false, 500, e.message || "Server Error", {}));
+  }
+};
 
+export const getJobsStatus = async (req, res) => {
+  try {
+    const apiKey = req.body?.bearerToken;
+    const { jobIds } = req.body || {};
 
+    if (!jobIds || !Array.isArray(jobIds) || jobIds.length === 0) {
+      return res
+        .status(400)
+        .send(responseBody(true, false, 400, "Payload not satisfied", {}));
+    }
+
+    const isSuccess = await getJobsStatusByIdsService(jobIds);
+
+    if (isSuccess.success) {
+      const jobsStatus = isSuccess?.data?.jobsStatus;
+      return res.status(200).send(
+        responseBody(false, true, 200, isSuccess.message, {
+          jobsStatus,
+        }),
+      );
+    }
+    return res
+      .status(400)
+      .send(responseBody(true, false, 400, isSuccess.message, {}));
   } catch (e) {
     return res
       .status(500)

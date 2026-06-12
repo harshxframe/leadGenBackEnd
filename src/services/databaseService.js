@@ -573,8 +573,8 @@ export const getDashBoardUserService = async (id) => {
     delete userObj["__v"];
 
     // Get Leads
-    const totalLeads = await Leads.countDocuments({userId:id});
-    const countJobs = await LeadJobs.countDocuments({userId:id});
+    const totalLeads = await Leads.countDocuments({ userId: id });
+    const countJobs = await LeadJobs.countDocuments({ userId: id });
 
     userObj["totalLeads"] = totalLeads || 0;
     userObj["totalJobs"] = countJobs || 0;
@@ -597,7 +597,9 @@ export const updateDevConfigService = async (id, payload) => {
     if (!updateDevConfig) {
       return serviceResponse(false, "User not found", {});
     }
-    return serviceResponse(true, "Dev config update successful", {apiKey:updateDevConfig?.apiKey});
+    return serviceResponse(true, "Dev config update successful", {
+      apiKey: updateDevConfig?.apiKey,
+    });
   } catch (e) {
     return serviceResponse(false, "Database operation failed", {});
   }
@@ -607,7 +609,7 @@ export const getJobsInPaginationService = async (id, page, limit, skip) => {
   try {
     // 2. Fetch data and total count simultaneously for performance
     const [jobs, totalJobs] = await Promise.all([
-      LeadJobs.find({ userId: id, requestSource:"dashboard" })
+      LeadJobs.find({ userId: id, requestSource: "dashboard" })
         .skip(skip)
         .limit(limit)
         .sort({ createdAt: -1 }), // Optional: shows newest jobs first
@@ -713,9 +715,9 @@ export const paymentHistoryService = async (userId, page, limit, skip) => {
   }
 };
 
-export const getAPIUserService = async (apiKey) =>{
- try {
-    const getAPIUser = await User.findOne({apiKey:apiKey});
+export const getAPIUserService = async (apiKey) => {
+  try {
+    const getAPIUser = await User.findOne({ apiKey: apiKey });
     if (!getAPIUser) {
       return serviceResponse(false, "User does not exsit", {});
     }
@@ -723,4 +725,17 @@ export const getAPIUserService = async (apiKey) =>{
   } catch (e) {
     return serviceResponse(false, e.message || "DB Error", {});
   }
-}
+};
+
+export const getJobsStatusByIdsService = async (jobIds) => {
+  try {
+    const getJobsStatus = await LeadJobs.find({
+      jobId: { $in: jobIds },
+    }).select("-_id status jobId");
+    
+    return serviceResponse(true, "Status fetched successfully", {jobsStatus:getJobsStatus || []});
+
+  } catch (e) {
+        return serviceResponse(false, e.message || "DB Error", {});
+  }
+};

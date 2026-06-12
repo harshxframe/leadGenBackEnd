@@ -1,7 +1,7 @@
 const values = {
 adminVarificationEmail:"no-reply@korexbase.com",
 adminName:"Korexbase Team",
-dashboardUrl:"https://www.korexbase.com/login",
+dashboardUrl:"https://www.korexbase.com/dashboard",
 ownerEMail:"harsh@korexbase.com",
 ownerName:"Harsh Verma"
 }

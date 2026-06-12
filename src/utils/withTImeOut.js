@@ -1,4 +1,4 @@
-export const withTimeOut = (p, ms = 15000) => {
+export const withTimeOut = (p, ms = 15000) => { 
   return Promise.race([
     p,
 

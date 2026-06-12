@@ -40,7 +40,7 @@ export const systemHealthMiddleware = async (req, res) => {
     };
 
     return res.status(200).send(
-      responseBody(false, true, 200, "Health is Ok", {
+      responseBody(false, true, 200, "Health is Okay", {
         systemInfo: systemInfo,
       }),
     );

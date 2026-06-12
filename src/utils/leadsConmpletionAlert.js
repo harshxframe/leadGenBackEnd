@@ -1,6 +1,7 @@
 import values from "../config/values.js";
 import { leadsCompletedEmailTemplate } from "./emailTamplates.js";
 import sendEmail from "../services/emailService.js";
+import sendMailJetEmail from "../services/mailJetEmailService.js";
 
 export const sendEmailHelperOnJobSuccess = async (
   userName,
@@ -37,6 +38,18 @@ export const sendEmailHelperOnJobSuccess = async (
     if (isEmailSend.success) {
       return true;
     } else {
+        const finalEmailResult = await sendMailJetEmail(
+        adminEmail,
+        adminName,
+        email,
+        `Your ${totalLeads} leads are ready 🚀`,
+        userName,
+        emailTamplate,
+      );
+
+      if(finalEmailResult.success){
+        return true;
+      }
       return false;
     }
   } catch (e) {

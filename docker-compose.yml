@@ -23,7 +23,7 @@ services:
       NODE_ENV: production
       REDIS_HOST: redis
       REDIS_PORT: 6379
-      HOST_SHARED_TEMP: /Users/harsh/projects/aileadGenerator/shared-temp
+      HOST_SHARED_TEMP: /opt/leadextractor/shared-temp
 
     volumes:
       - ./logs:/app/logs

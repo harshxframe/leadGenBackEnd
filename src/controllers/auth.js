@@ -23,6 +23,7 @@ import { generateToken, readToken } from "../utils/jwt.js";
 import { getDashBoardUserService } from "../services/databaseService.js";
 import logger from "../utils/logger.js";
 import sendMailJetEmail from "../services/mailJetEmailService.js";
+import { sendTelegramAlert } from "../utils/telegramAlert.js";
 
 export const createAccount = async (req, res) => {
   try {
@@ -49,6 +50,9 @@ export const createAccount = async (req, res) => {
     const isSuccess = await createAccountService(finalPayload);
     if (isSuccess.success) {
       const token = generateToken(String(isSuccess.data.user?._id));
+      sendTelegramAlert(
+        `🎉 ${name || "NEW USER"} joined Korexbase Leads\n📧 ${email || "NOT_FOUND"}`
+      );
       return res.status(200).send(
         responseBody(false, true, 200, "Account created successfull", {
           token: token,
@@ -479,7 +483,11 @@ export const updateDevConfig = async (req, res) => {
     if (isSuccess.success) {
       return res
         .status(200)
-        .send(responseBody(false, true, 200, isSuccess.message, {data:isSuccess.data}));
+        .send(
+          responseBody(false, true, 200, isSuccess.message, {
+            data: isSuccess.data,
+          }),
+        );
     }
     return res
       .status(400)

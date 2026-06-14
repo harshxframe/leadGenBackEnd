@@ -1,6 +1,7 @@
 import { Transaction } from "../models/transaction.js";
-import User  from "../models/user.js";
+import User from "../models/user.js";
 import logger from "../utils/logger.js";
+import { sendTelegramAlert } from "../utils/telegramAlert.js";
 
 export const lemonSqueezyWebhook = async (req, res) => {
   try {
@@ -65,6 +66,13 @@ export const lemonSqueezyWebhook = async (req, res) => {
     });
 
     logger.info(`Credits Added | User: ${userId} | Credits: ${credits}`);
+    sendTelegramAlert(
+      `💰 NEW SALE
+       💸 Amount: ₹${amount || "000"}
+       📦 Plan: ${planName || "NOT_AVL"}
+
+       🎉 Payment Successful`
+    );
 
     return res.sendStatus(200);
   } catch (e) {

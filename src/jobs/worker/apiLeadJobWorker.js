@@ -9,6 +9,7 @@ import {
 import { connectRedis, redisConnection } from "../../config/redisConfig.js";
 import { getAdminSettings } from "../../services/redisService.js";
 import { apiLeadsWorkerProcessor } from "../../services/apiLeadWorkerProcessor.js";
+import { sendTelegramAlert } from "../../utils/telegramAlert.js";
 
 const MONGO_DB_URI = String(env.MONGO_URI_PRIMARY);
 
@@ -111,6 +112,7 @@ async function LeadsJobWorker() {
             error: err?.message,
             attemptsMade,
           });
+          sendTelegramAlert(`🚨 Lead Job Permanently Failed, Job ID: ${job.id}, Error: ${err?.message}, Attempts: ${attemptsMade}`);
         }
       } catch (e) {
         logger.error("Lead failed handler internal error", {
@@ -128,6 +130,7 @@ async function LeadsJobWorker() {
     });
   } catch (e) {
     logger.error("Failed to start Leads Job Worker", { error: e.message });
+    sendTelegramAlert(`"Failed to start Leads Job Worker", error: ${e.message}`);
   }
 }
 
@@ -141,6 +144,7 @@ const shutdown = async (signal) => {
     }
     await mongoose.disconnect();
     logger.info("Lead worker shutdown completely clean.");
+    sendTelegramAlert("API Lead worker shutdown completely clean.");
     process.exit(0);
   } catch (err) {
     logger.error("Lead worker shutdown failed during disconnect cleanup", {
